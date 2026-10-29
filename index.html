@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ecologia Oggi</title>
+<meta name="description" content="Ecologia Oggi — il giornale sull'ambiente a cura di Servizi Ecologici. Edizione del 28 ottobre 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f8f4ea;
+    --ink: #1b1d1a;
+    --muted: #5d6157;
+    --rule: #1b1d1a;
+    --hair: #cfc8b6;
+    --green: #1f5a3f;
+    --green-soft: #e3ebdf;
+    --ocean: #18506e;
+    --fire: #b4471f;
+    --gold: #a4782a;
+    --desk: #d9d4c7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --desk: #23251f; }
+  }
+  :root[data-theme="dark"] { --desk: #23251f; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    background: var(--desk);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 9.1pt;
+    line-height: 1.38;
+    padding: 24px 16px;
+  }
+
+  /* ---------- pagina ---------- */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto 24px;
+    padding: 10mm 13mm 8mm;
+    background: var(--paper);
+    box-shadow: 0 2px 18px rgba(0,0,0,.18);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: none; padding: 0; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
+    .page:last-child { page-break-after: auto; break-after: auto; }
+  }
+  @media screen and (max-width: 860px) {
+    .page { zoom: calc((100vw - 32px) / 210mm); }
+  }
+
+  /* ---------- testata ---------- */
+  .topline {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: Inter, sans-serif; font-size: 7pt; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 2.2mm; border-bottom: 0.4pt solid var(--rule);
+  }
+  .topline b { color: var(--ink); font-weight: 700; }
+  .masthead { text-align: center; padding: 3mm 0 2.4mm; position: relative; }
+  .masthead h1 {
+    font-family: "Playfair Display", serif; font-weight: 900;
+    font-size: 54pt; line-height: .95; letter-spacing: -.01em;
+  }
+  .masthead h1 .leaf { display: inline-block; width: .5em; height: .5em; vertical-align: .12em; margin: 0 .04em; }
+  .masthead .motto {
+    font-family: "Playfair Display", serif; font-style: italic; font-weight: 600;
+    font-size: 11.5pt; color: var(--green); margin-top: 1.5mm;
+  }
+  .ear {
+    position: absolute; top: 6mm; width: 33mm; padding: 2mm 2.5mm;
+    border: 0.6pt solid var(--rule);
+    font-family: Inter, sans-serif; font-size: 6.4pt; line-height: 1.35; text-align: left;
+  }
+  .ear strong { display: block; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; margin-bottom: .6mm; color: var(--green); }
+  .ear.left { left: 0; }
+  .ear.right { right: 0; }
+  .navbar {
+    display: flex; justify-content: space-between;
+    border-top: 2.2pt solid var(--rule); border-bottom: 0.6pt solid var(--rule);
+    padding: 1.6mm 1mm;
+    font-family: Inter, sans-serif; font-size: 7pt; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  }
+  .navbar span:not(:last-child)::after { content: "·"; margin-left: 3.2mm; color: var(--hair); }
+
+  .runhead {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 2.2pt solid var(--rule); padding-bottom: 1.6mm; margin-bottom: 4mm;
+    font-family: Inter, sans-serif; font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+  }
+  .runhead .name { font-family: "Playfair Display", serif; font-weight: 900; font-size: 15pt; letter-spacing: 0; text-transform: none; color: var(--ink); }
+
+  .foot {
+    margin-top: auto; padding-top: 2mm; border-top: 0.4pt solid var(--rule);
+    display: flex; justify-content: space-between;
+    font-family: Inter, sans-serif; font-size: 6.6pt; color: var(--muted); letter-spacing: .04em;
+  }
+
+  /* ---------- articoli ---------- */
+  .kicker {
+    font-family: Inter, sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--green); margin-bottom: 1.6mm;
+  }
+  .kicker .where { color: var(--muted); font-weight: 500; }
+  .kicker.ocean { color: var(--ocean); }
+  .kicker.fire { color: var(--fire); }
+  .kicker.gold { color: var(--gold); }
+  h2.hl {
+    font-family: "Playfair Display", serif; font-weight: 800; line-height: 1.04; letter-spacing: -.005em;
+  }
+  .hl.xl { font-size: 34pt; }
+  .hl.l  { font-size: 25pt; }
+  .hl.m  { font-size: 19pt; }
+  .deck {
+    font-style: italic; font-size: 11pt; line-height: 1.35; color: #34372f; margin: 2mm 0 3mm;
+  }
+  .byline {
+    font-family: Inter, sans-serif; font-size: 6.6pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+    padding: 1.2mm 0; border-top: 0.4pt solid var(--hair); border-bottom: 0.4pt solid var(--hair); margin-bottom: 3mm;
+  }
+  .cols { column-gap: 5mm; column-rule: 0.4pt solid var(--hair); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .cols-2 { column-count: 2; }
+  .cols-3 { column-count: 3; }
+  .cols p { margin-bottom: 1.6mm; text-indent: 0; }
+  .cols p + p { text-indent: 1.1em; }
+  .cols h3 + p, .cols ul + p { text-indent: 0; }
+  .cols h3 {
+    font-family: Inter, sans-serif; font-size: 7.6pt; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    margin: 2.6mm 0 1mm; break-after: avoid; color: var(--ink); text-align: left;
+  }
+  .cols h3::before { content: "■ "; color: var(--green); font-size: 6pt; vertical-align: .1em; }
+  .cols ul { list-style: none; margin: 0 0 1.6mm; text-align: left; }
+  .cols li { padding-left: 3.2mm; position: relative; margin-bottom: .9mm; }
+  .cols li::before { content: ""; position: absolute; left: 0; top: .55em; width: 1.4mm; height: 1.4mm; border-radius: 50%; background: var(--green); }
+  .dropcap::first-letter {
+    font-family: "Playfair Display", serif; font-weight: 900; float: left;
+    font-size: 38pt; line-height: .82; padding: 1mm 1.6mm 0 0; color: var(--green);
+  }
+  .fonti {
+    break-inside: avoid; margin-top: 2.4mm; padding-top: 1.6mm; border-top: 0.4pt solid var(--rule);
+    font-family: Inter, sans-serif; font-size: 6.2pt; line-height: 1.4; color: var(--muted); text-align: left;
+  }
+  .fonti b { color: var(--ink); letter-spacing: .1em; }
+  .fonti em { font-style: normal; }
+
+  .rule2 { border: 0; border-top: 2.2pt solid var(--rule); margin: 4mm 0 3.4mm; }
+  .rule2.thin { border-top-width: 0.6pt; }
+
+  /* ---------- prima pagina ---------- */
+  .front { display: grid; grid-template-columns: 1fr 54mm; gap: 6mm; margin: 3mm 0 3mm; padding-bottom: 2.4mm; border-bottom: 2.2pt solid var(--rule); }
+  .front + .cols { font-size: 8.8pt; }
+  .page + .page .cols { font-size: 9.7pt; line-height: 1.46; }
+  .front .deck { font-size: 10.2pt; margin: 1.6mm 0 2.4mm; }
+  .front .main { min-width: 0; }
+  .front aside { border-left: 0.6pt solid var(--rule); padding-left: 5mm; display: flex; flex-direction: column; }
+  .figure { margin: 0 0 3mm; }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .figure figcaption { font-family: Inter, sans-serif; font-size: 6.4pt; color: var(--muted); margin-top: 1mm; }
+
+  .aside-title {
+    font-family: Inter, sans-serif; font-size: 7.4pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    border-bottom: 2.2pt solid var(--rule); padding-bottom: 1.2mm; margin-bottom: 2.4mm;
+  }
+  .teaser { display: grid; grid-template-columns: 6mm 1fr; padding-bottom: 1.4mm; margin-bottom: 1.4mm; border-bottom: 0.4pt solid var(--hair); }
+  .teaser .n { font-family: "Playfair Display", serif; font-weight: 900; font-size: 17pt; line-height: .9; color: var(--green); }
+  .teaser h4 { font-family: "Playfair Display", serif; font-weight: 700; font-size: 9pt; line-height: 1.14; margin-bottom: 1mm; }
+  .teaser p { font-size: 8.2pt; line-height: 1.35; color: #3a3d35; }
+  .teaser .kicker { font-size: 5.8pt; margin-bottom: .4mm; }
+  .teaser .pg { font-family: Inter, sans-serif; font-size: 6.2pt; font-weight: 700; color: var(--green); letter-spacing: .06em; text-transform: uppercase; margin-top: .8mm; }
+
+  .boxed {
+    background: var(--green); color: #f3efe2; padding: 3.4mm 3.6mm; margin-top: auto;
+  }
+  .boxed h5 { font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 13pt; line-height: 1.1; margin-bottom: 1.4mm; }
+  .boxed p { font-size: 8pt; line-height: 1.38; }
+  .boxed .small { font-family: Inter, sans-serif; font-size: 6.4pt; letter-spacing: .1em; text-transform: uppercase; margin-top: 2mm; opacity: .85; }
+
+  /* ---------- statistiche ---------- */
+  .stats { display: grid; gap: 0; border-top: 0.6pt solid var(--rule); border-bottom: 0.6pt solid var(--rule); margin: 0 0 3.4mm; }
+  .stats.s4 { grid-template-columns: repeat(4, 1fr); }
+  .stats.s3 { grid-template-columns: repeat(3, 1fr); }
+  .stat { padding: 2.2mm 3mm; }
+  .stat + .stat { border-left: 0.4pt solid var(--hair); }
+  .stat .v { font-family: "Playfair Display", serif; font-weight: 900; font-size: 22pt; line-height: 1; }
+  .stat .l { font-family: Inter, sans-serif; font-size: 6.6pt; line-height: 1.3; color: var(--muted); margin-top: .8mm; }
+  .stat.fire .v { color: var(--fire); }
+  .stat.green .v { color: var(--green); }
+  .stat.ocean .v { color: var(--ocean); }
+  .stat.gold .v { color: var(--gold); }
+
+  .factbox {
+    break-inside: avoid; background: var(--green-soft); border-top: 2.2pt solid var(--green);
+    padding: 2.4mm 3mm; margin: 1.6mm 0 2.4mm; text-align: left;
+  }
+  .factbox .t { font-family: Inter, sans-serif; font-size: 6.8pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 1.2mm; }
+  .factbox .row { display: flex; gap: 2.4mm; align-items: baseline; padding: .8mm 0; border-top: 0.4pt solid rgba(31,90,63,.25); }
+  .factbox .row:first-of-type { border-top: 0; }
+  .factbox .row b { font-family: "Playfair Display", serif; font-weight: 900; font-size: 12pt; min-width: 15mm; color: var(--ink); }
+  .factbox .row span { font-size: 8pt; line-height: 1.3; }
+
+  .pull {
+    break-inside: avoid; margin: 2mm 0 2.6mm; padding: 2mm 0; border-top: 1.4pt solid var(--rule); border-bottom: 0.4pt solid var(--rule);
+    font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 13pt; line-height: 1.18; text-align: left;
+  }
+  .pull small { display: block; font-family: Inter, sans-serif; font-style: normal; font-weight: 600; font-size: 6.4pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 1.2mm; }
+
+  /* barre biodiversità */
+  .bars { break-inside: avoid; margin: 1.6mm 0 2.6mm; text-align: left; }
+  .bar { margin-bottom: 2mm; }
+  .bar .lbl { font-family: Inter, sans-serif; font-size: 6.8pt; display: flex; justify-content: space-between; margin-bottom: .7mm; }
+  .bar .lbl b { font-weight: 700; }
+  .bar .track { height: 3.2mm; background: #e2dccb; position: relative; }
+  .bar .fill { position: absolute; inset: 0 auto 0 0; background: var(--green); }
+  .bar .fill.warn { background: var(--gold); }
+
+  /* timeline */
+  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; margin: 0 0 2.4mm; }
+  .timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 3.2mm; border-top: 1pt solid var(--rule); }
+  .tl { position: relative; padding-top: 6.4mm; padding-right: 3mm; }
+  .tl::before { content: ""; position: absolute; top: 1.6mm; left: 0; width: 3.2mm; height: 3.2mm; border-radius: 50%; background: var(--paper); border: 1.2pt solid var(--rule); }
+  .tl.now::before { background: var(--gold); border-color: var(--gold); }
+  .tl.next::before { border-style: dashed; }
+  .tl b { font-family: "Playfair Display", serif; font-weight: 900; font-size: 12pt; display: block; line-height: 1.05; }
+  .tl span { font-size: 8pt; line-height: 1.3; display: block; margin-top: .6mm; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .split { display: grid; grid-template-columns: 1fr 58mm; gap: 6mm; align-items: start; }
+  .split > aside { border-left: 0.6pt solid var(--rule); padding-left: 5mm; }
+
+  .agenda .item { display: grid; grid-template-columns: 17mm 1fr; gap: 2mm; padding: 1.8mm 0; border-bottom: 0.4pt solid var(--hair); }
+  .agenda .d { font-family: "Playfair Display", serif; font-weight: 900; font-size: 11pt; line-height: 1.05; color: var(--green); }
+  .agenda .d small { display: block; font-family: Inter, sans-serif; font-weight: 600; font-size: 6pt; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .agenda p { font-size: 8.2pt; line-height: 1.3; }
+  .agenda p b { font-family: "Playfair Display", serif; font-size: 9.4pt; }
+
+  /* pannelli infografici */
+  .visual { margin: 0 0 4mm; }
+  .visual.two { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .panel { border-top: 2.2pt solid var(--rule); padding-top: 2mm; }
+  .panel svg { display: block; width: 100%; height: auto; }
+  .panel-t { font-family: Inter, sans-serif; font-size: 6.8pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.6mm; }
+  .fire-panel { border-top-color: var(--fire); }
+  .fire-panel .panel-t { color: var(--fire); }
+  .panel .big { font-family: "Playfair Display", serif; font-weight: 900; font-size: 52pt; line-height: 1.05; color: var(--fire); margin-bottom: .6mm; }
+  .colophon + .foot { margin-top: 0; }
+  .panel .cap { font-family: Inter, sans-serif; font-size: 7pt; line-height: 1.35; color: var(--muted); }
+  .mini { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-top: 2.6mm; padding-top: 2mm; border-top: 0.4pt solid var(--hair); }
+  .mini.mini3 { grid-template-columns: repeat(3, 1fr); border-top: 0; margin-top: 0; padding-top: 0; }
+  .mini b { display: block; font-family: "Playfair Display", serif; font-weight: 900; font-size: 18pt; line-height: 1; }
+  .mini.mini3 b { font-size: 26pt; color: var(--green); }
+  .fire-panel .mini b { color: var(--fire); }
+  .mini span { display: block; font-family: Inter, sans-serif; font-size: 6.8pt; line-height: 1.3; color: var(--muted); margin-top: .8mm; }
+  .bar .half { position: absolute; top: -1mm; bottom: -1mm; left: 50%; border-left: 1pt dashed var(--ink); }
+
+  .who { margin: 3mm 0; }
+  .who-t { font-family: Inter, sans-serif; font-size: 6.8pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; border-bottom: 1.4pt solid var(--rule); padding-bottom: 1mm; margin-bottom: 1mm; }
+  .who-r { padding: 1.4mm 0; border-bottom: 0.4pt solid var(--hair); }
+  .who-r b { font-family: "Playfair Display", serif; font-size: 12pt; display: block; }
+  .who-r span { font-size: 8pt; line-height: 1.3; }
+
+  .stack { border-top: 2.2pt solid var(--rule); }
+  .stack .stat { padding: 2.2mm 0; border-bottom: 0.4pt solid var(--hair); }
+  .stack .stat + .stat { border-left: 0; }
+
+  .colophon {
+    margin-top: auto; margin-bottom: 3mm; border: 0.6pt solid var(--rule); padding: 3.4mm 4mm; display: grid; grid-template-columns: auto 1fr; gap: 4mm; align-items: center;
+  }
+  .colophon .mark { font-family: "Playfair Display", serif; font-weight: 900; font-size: 22pt; line-height: .95; }
+  .colophon p { font-size: 8pt; line-height: 1.4; color: #3a3d35; }
+</style>
+</head>
+<body>
+
+<!-- ===================================================== PAGINA 1 ===================================================== -->
+<section class="page">
+  <div class="topline">
+    <span><b>Mercoledì 28 ottobre 2026</b></span>
+    <span>Anno I · Numero 1</span>
+    <span>A cura di <b>Servizi Ecologici</b></span>
+  </div>
+
+  <header class="masthead">
+    <h1>Ecologia<svg class="leaf" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 34 C6 14 18 5 36 4 C35 22 26 34 6 34 Z" fill="#1f5a3f"/><path d="M6 34 C14 24 22 16 32 9" stroke="#f8f4ea" stroke-width="2" fill="none"/></svg>Oggi</h1>
+    <div class="motto">Notizie dal pianeta, ogni mattina</div>
+  </header>
+
+  <nav class="navbar">
+    <span>Clima</span><span>Energia</span><span>Biodiversità</span><span>Oceani e acque</span><span>Foreste e suolo</span><span>Rifiuti e riciclo</span><span>Leggi e politica</span>
+  </nav>
+
+  <div class="front">
+    <div class="main">
+      <div class="kicker ocean">Oceani e acque <span class="where">· Mondo · 2 min di lettura</span></div>
+      <h2 class="hl xl" style="font-size:29pt">Gli oceani assorbono meno CO₂: la capacità è già calata del 6%</h2>
+      <p class="deck">Un nuovo rapporto delle Nazioni Unite avverte che il riscaldamento globale sta indebolendo il più grande alleato naturale contro la crisi climatica. Il tema arriverà sul tavolo della COP31 di novembre.</p>
+      <figure class="figure">
+        <svg viewBox="0 0 600 150" role="img" aria-label="L'oceano assorbe il 30% della CO₂ e il 90% del calore in eccesso; la sua capacità è calata del 6%">
+          <defs>
+            <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2c7396"/><stop offset="1" stop-color="#0d3550"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="150" fill="url(#sea)"/>
+          <rect width="600" height="44" fill="#e8eef0"/>
+          <path d="M0 44 Q 25 34 50 44 T 100 44 T 150 44 T 200 44 T 250 44 T 300 44 T 350 44 T 400 44 T 450 44 T 500 44 T 550 44 T 600 44 V 60 H 0 Z" fill="#2c7396"/>
+          <path d="M0 62 Q 30 54 60 62 T 120 62 T 180 62 T 240 62 T 300 62 T 360 62 T 420 62 T 480 62 T 540 62 T 600 62" stroke="#9cc6d8" stroke-width="1.4" fill="none" opacity=".6"/>
+          <path d="M0 84 Q 30 76 60 84 T 120 84 T 180 84 T 240 84 T 300 84 T 360 84 T 420 84 T 480 84 T 540 84 T 600 84" stroke="#9cc6d8" stroke-width="1" fill="none" opacity=".35"/>
+          <g font-family="Inter, sans-serif" font-weight="700" fill="#18506e" font-size="10">
+            <text x="22" y="27">CO₂</text><text x="78" y="20">CO₂</text><text x="132" y="31">CO₂</text><text x="188" y="18">CO₂</text>
+          </g>
+          <g stroke="#18506e" stroke-width="1.2" fill="none" opacity=".7">
+            <path d="M34 32 v 18"/><path d="M90 25 v 24"/><path d="M144 36 v 14"/><path d="M200 23 v 26"/>
+          </g>
+          <g fill="#cfe4ee" opacity=".55">
+            <circle cx="40" cy="104" r="3"/><circle cx="62" cy="128" r="2"/><circle cx="96" cy="112" r="2.5"/><circle cx="130" cy="132" r="3.4"/><circle cx="168" cy="114" r="2"/><circle cx="206" cy="136" r="2.6"/>
+          </g>
+          <g font-family="Playfair Display, serif" fill="#f8f4ea">
+            <text x="268" y="116" font-size="70" font-weight="900">−6%</text>
+          </g>
+          <g font-family="Inter, sans-serif" fill="#f8f4ea">
+            <text x="272" y="138" font-size="9.5" letter-spacing="1">CAPACITÀ DEI MARI DI IMMAGAZZINARE CARBONIO</text>
+            <text x="455" y="76" font-size="26" font-family="Playfair Display, serif" font-weight="900">30%</text>
+            <text x="455" y="88" font-size="7.5" letter-spacing=".6">DELLA CO₂ UMANA ASSORBITA</text>
+            <text x="455" y="112" font-size="26" font-family="Playfair Display, serif" font-weight="900" fill="#ffd9a8">90%</text>
+            <text x="455" y="124" font-size="7.5" letter-spacing=".6">DEL CALORE IN ECCESSO</text>
+          </g>
+          <line x1="440" y1="62" x2="440" y2="128" stroke="#f8f4ea" stroke-width=".6" opacity=".6"/>
+        </svg>
+        <figcaption>Fonte: rapporto UNEP–UNFCCC, ottobre 2026. Elaborazione di Ecologia Oggi.</figcaption>
+      </figure>
+    </div>
+    <aside>
+      <div class="aside-title">In questo numero</div>
+      <div class="teaser"><div class="n">1</div><div>
+        <div class="kicker fire">Foreste e suolo <span class="where">· p. 2</span></div>
+        <h4>Amazzonia in fiamme: incendi su del 62% mentre la deforestazione tocca il minimo storico</h4></div></div>
+      <div class="teaser"><div class="n">2</div><div>
+        <div class="kicker ">Clima <span class="where">· p. 3</span></div>
+        <h4>COP31 di Antalya: tutto quello che c'è da sapere sul vertice di novembre</h4></div></div>
+      <div class="teaser"><div class="n">3</div><div>
+        <div class="kicker ">Biodiversità <span class="where">· p. 4</span></div>
+        <h4>A Yerevan il primo bilancio mondiale: meno della metà degli obiettivi è in linea</h4></div></div>
+      <div class="teaser"><div class="n">4</div><div>
+        <div class="kicker gold">Rifiuti e riciclo <span class="where">· p. 5</span></div>
+        <h4>Riciclo della plastica, l'Italia in affanno: impianti in crisi e magazzini pieni</h4></div></div>
+      <div class="teaser" style="border-bottom:0;margin-bottom:0;padding-bottom:0"><div class="n">5</div><div>
+        <div class="kicker ">Leggi e politica <span class="where">· p. 6</span></div>
+        <h4>«Giudizio Universale», la prima causa climatica contro lo Stato torna in tribunale</h4></div></div>
+    </aside>
+  </div>
+
+  <div class="cols cols-3">
+    <p class="dropcap">Per decenni l'oceano ha lavorato in silenzio per noi: assorbe circa il 30% dell'anidride carbonica prodotta dalle attività umane e il 90% del calore in eccesso intrappolato dai gas serra. Ora però questo "servizio" gratuito sta perdendo colpi. Secondo un nuovo rapporto del Programma delle Nazioni Unite per l'ambiente (UNEP) e del segretariato della Convenzione ONU sul clima (UNFCCC), il cambiamento climatico ha già ridotto di circa il 6% la capacità dei mari di immagazzinare carbonio.</p>
+    <h3>Perché succede</h3>
+    <p>Acque più calde, cambiamenti nella chimica del mare, nelle correnti e negli ecosistemi marini rendono l'oceano meno efficiente nel catturare CO₂. Il risultato è semplice e preoccupante: una quota maggiore delle nostre emissioni resta nell'atmosfera e accelera ulteriormente il riscaldamento. Secondo l'autrice principale del rapporto, Sara Traerup, il processo potrebbe accelerare nel prossimo futuro.</p>
+    <h3>Il problema dei dati mancanti</h3>
+    <p>Uno dei punti centrali del rapporto è che sappiamo ancora troppo poco. Mancano misurazioni affidabili in vaste aree come l'Oceano Australe, l'Oceano Indiano, l'Artico e molte zone costiere. Per questo gli esperti chiedono di costruire una vera "intelligenza del carbonio oceanico": reti di monitoraggio capaci di dire con precisione quanto carbonio entra ed esce dai mari.</p>
+    <h3>Le soluzioni sul tavolo</h3>
+    <p>Il rapporto esamina tre famiglie di strumenti:</p>
+    <ul>
+      <li><b>Sistemi di monitoraggio dell'oceano</b>, la base per qualsiasi decisione.</li>
+      <li><b>Ecosistemi del "carbonio blu"</b>: mangrovie, praterie di fanerogame marine e paludi salmastre, che oggi sequestrano circa 407 milioni di tonnellate di CO₂ all'anno. Proteggerli e ripristinarli è una delle strategie più concrete.</li>
+      <li><b>Rimozione marina della CO₂</b>: tecnologie ancora incerte, che secondo l'ONU richiedono più ricerca e regole chiare. Non vanno considerate una scorciatoia al posto del taglio delle emissioni.</li>
+    </ul>
+    <p>Tra gli esempi positivi citati ci sono lo scambio "debito contro natura" delle Seychelles del 2015, che finanzia la tutela marina, e i progetti di mappatura del carbonio blu a Fiji, Papua Nuova Guinea, Isole Salomone e Vanuatu.</p>
+    <h3>Cosa ci dice</h3>
+    <p>I piccoli Stati insulari producono meno dell'1% delle emissioni globali, ma sono tra i primi a subire le conseguenze del cambiamento dei mari. Il rapporto arriva a pochi giorni dalla COP31 di Antalya, in Turchia, dove gli oceani saranno uno dei temi da seguire. Il messaggio di fondo è chiaro: non possiamo dare per scontato che il mare continui ad assorbire i nostri errori.</p>
+    <div class="fonti"><b>FONTI</b> · UN News, <em>«Ocean's ability to absorb carbon is weakening as climate change intensifies, UN warns»</em> (28 ottobre 2026)</div>
+  </div>
+
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 1</span></div>
+</section>
+
+<!-- ===================================================== PAGINA 2 ===================================================== -->
+<section class="page">
+  <div class="runhead"><span class="name">Ecologia Oggi</span><span>Foreste e suolo</span><span>Mercoledì 28 ottobre 2026</span></div>
+
+  <div class="kicker fire">Foreste e suolo <span class="where">· Brasile · 2 min di lettura</span></div>
+  <h2 class="hl xl">Amazzonia in fiamme: incendi su del 62% mentre la deforestazione tocca il minimo storico</h2>
+  <p class="deck">La siccità legata a El Niño alimenta un'ondata di roghi nell'Amazzonia brasiliana. Manaus è avvolta dal fumo da settimane e il governo indaga su possibili incendi appiccati in modo organizzato.</p>
+
+  <div class="visual two">
+    <div class="panel fire-panel">
+      <div class="panel-t">Il fuoco · ottobre 2026</div>
+      <div class="big">9.045</div>
+      <div class="cap">focolai nell'Amazzonia brasiliana nella prima metà del mese</div>
+      <div class="mini">
+        <div><b>+62%</b><span>sullo stesso periodo del 2025</span></div>
+        <div><b>1.679</b><span>roghi nel solo stato di Amazonas, più del triplo</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-t" style="color:var(--green)">La foresta tagliata · km² all'anno</div>
+      <svg viewBox="0 0 300 118" role="img" aria-label="Deforestazione: 11.600 km² nel 2022, 3.355 km² tra agosto 2025 e luglio 2026">
+        <g font-family="Inter, sans-serif" font-size="8.5" fill="#5d6157">
+          <text x="0" y="22">2022</text>
+          <text x="0" y="70">2025–26</text>
+        </g>
+        <rect x="46" y="10" width="244" height="18" fill="#9fb8a8"/>
+        <rect x="46" y="58" width="70.6" height="18" fill="#1f5a3f"/>
+        <g font-family="Playfair Display, serif" font-weight="900" font-size="15" fill="#1b1d1a">
+          <text x="46" y="48">11.600</text>
+          <text x="122" y="73">3.355</text>
+        </g>
+        <text x="46" y="98" font-family="Inter, sans-serif" font-size="8" fill="#1f5a3f" font-weight="700">−42% SULL'ANNO PRECEDENTE · MINIMO DAL 1988</text>
+        <text x="46" y="111" font-family="Inter, sans-serif" font-size="7.5" fill="#5d6157">Obiettivo del governo Lula: deforestazione zero entro il 2030</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="cols cols-3">
+    <p class="dropcap">È un paradosso che racconta bene la complessità della crisi ambientale. Nella prima metà di ottobre i satelliti hanno rilevato 9.045 focolai nell'Amazzonia brasiliana, il 62% in più rispetto allo stesso periodo dell'anno scorso. Eppure, nello stesso momento, la deforestazione è scesa al livello più basso da quasi quarant'anni.</p>
+    <h3>Una siccità spinta da El Niño</h3>
+    <p>Il fenomeno climatico di El Niño, che quest'anno si annuncia molto intenso, ha ritardato le piogge e reso la foresta più secca e vulnerabile. Secondo i dati del sistema di sorveglianza brasiliano riportati da Reuters, nel solo stato di Amazonas gli incendi delle prime due settimane di ottobre sono stati 1.679, più del triplo rispetto al 2025.</p>
+    <p>Ma il clima da solo non basta a spiegare tutto. Secondo Ane Alencar, direttrice scientifica dell'Istituto di ricerca ambientale dell'Amazzonia (IPAM), la maggior parte dei roghi è appiccata di proposito, di solito per liberare terreni destinati al bestiame. Il capo dell'agenzia ambientale federale Ibama, Jair Schmitt, ha dichiarato che polizia e intelligence stanno verificando se dietro l'ondata ci sia qualcosa di "orchestrato e strutturato".</p>
+    <div class="pull">Le politiche contro il taglio della foresta funzionano, ma un clima più caldo e secco rende l'Amazzonia sempre più esposta al fuoco.</div>
+    <h3>Manaus sotto il fumo</h3>
+    <div class="factbox" style="background:#f6e3d8;border-top-color:var(--fire)">
+      <div class="t" style="color:var(--fire)">Manaus, l'emergenza</div>
+      <div class="row" style="border-top-color:rgba(180,71,31,.25)"><b>2 mln+</b><span>abitanti avvolti dal fumo da settimane</span></div>
+      <div class="row" style="border-top-color:rgba(180,71,31,.25)"><b>300+</b><span>vigili del fuoco inviati dal governo federale</span></div>
+      <div class="row" style="border-top-color:rgba(180,71,31,.25)"><b>11</b><span>aerei antincendio</span></div>
+    </div>
+    <p>La conseguenza più visibile è a Manaus, capitale dello stato di Amazonas con oltre due milioni di abitanti, avvolta dal fumo da settimane. Le polveri sottili hanno raggiunto livelli tra i peggiori al mondo: la protezione civile ha inviato un'allerta ai cellulari invitando i residenti a restare in casa, e alcune scuole hanno sospeso le lezioni. Il governo federale ha inviato oltre 300 vigili del fuoco e 11 aerei.</p>
+    <h3>La buona notizia che resta</h3>
+    <p>Tra agosto 2025 e luglio 2026 sono stati disboscati 3.355 chilometri quadrati di foresta, il 42% in meno dell'anno precedente e il dato più basso dal 1988. Nel 2022 erano stati 11.600. Il governo Lula punta a deforestazione zero entro il 2030.</p>
+    <p>Il quadro, quindi, è doppio: le politiche contro il taglio della foresta funzionano, ma un clima più caldo e secco rende l'Amazzonia sempre più esposta al fuoco. Gli scienziati della NASA avvertono che la regione potrebbe essere solo all'inizio di una stagione degli incendi lunga e severa.</p>
+    <div class="fonti"><b>FONTI</b> · MercoPress, <em>«Amazon fires rise 62% in October as deforestation falls to a record low»</em> (21 ottobre 2026) · Reuters via Internazionale, <em>«Fires surge in Brazil's Amazon, fueled by El Niño and climate change»</em> (14 ottobre 2026)</div>
+  </div>
+
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 2</span></div>
+</section>
+
+<!-- ===================================================== PAGINA 3 ===================================================== -->
+<section class="page">
+  <div class="runhead"><span class="name">Ecologia Oggi</span><span>Clima</span><span>Mercoledì 28 ottobre 2026</span></div>
+
+  <div class="kicker">Clima <span class="where">· Turchia · 2 min di lettura</span></div>
+  <h2 class="hl xl">COP31 di Antalya: tutto quello che c'è da sapere sul vertice del clima di novembre</h2>
+  <p class="deck">Dal 9 al 20 novembre i Paesi del mondo si ritrovano in Turchia per la conferenza ONU sul clima. Presidenza turca, negoziati guidati dall'Australia e oltre 80.000 partecipanti attesi.</p>
+
+  <figure class="figure">
+    <svg viewBox="0 0 640 150" role="img" aria-label="Calendario della COP31: dal 9 al 20 novembre 2026, vertice dei leader l'11 e 12 novembre">
+      <defs>
+        <linearGradient id="med" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#1f5a3f"/><stop offset="1" stop-color="#173f2e"/>
+        </linearGradient>
+      </defs>
+      <rect width="640" height="150" fill="url(#med)"/>
+      <circle cx="580" cy="34" r="54" fill="#f2c46d" opacity=".18"/>
+      <circle cx="580" cy="34" r="30" fill="#f2c46d" opacity=".3"/>
+      <text x="22" y="40" font-family="Inter, sans-serif" font-size="9" font-weight="700" letter-spacing="2" fill="#cfe0d4">CONFERENZA ONU SUL CLIMA · ANTALYA EXPO CENTRE</text>
+      <text x="22" y="74" font-family="Playfair Display, serif" font-size="30" font-weight="900" fill="#f8f4ea">COP31 · Novembre 2026</text>
+      <g font-family="Inter, sans-serif" text-anchor="middle">
+        <g transform="translate(22,92)">
+          <g fill="#f8f4ea" fill-opacity=".1" stroke="#f8f4ea" stroke-opacity=".35">
+            <rect x="0" width="44" height="40"/><rect x="50" width="44" height="40"/>
+            <rect x="200" width="44" height="40"/><rect x="250" width="44" height="40"/><rect x="300" width="44" height="40"/><rect x="350" width="44" height="40"/><rect x="400" width="44" height="40"/><rect x="450" width="44" height="40"/><rect x="500" width="44" height="40"/><rect x="550" width="44" height="40"/>
+          </g>
+          <g fill="#f2c46d"><rect x="100" width="44" height="40"/><rect x="150" width="44" height="40"/></g>
+          <g font-family="Playfair Display, serif" font-weight="900" font-size="17" fill="#f8f4ea">
+            <text x="22" y="26">9</text><text x="72" y="26">10</text><text x="122" y="26" fill="#173f2e">11</text><text x="172" y="26" fill="#173f2e">12</text><text x="222" y="26">13</text><text x="272" y="26">14</text><text x="322" y="26">15</text><text x="372" y="26">16</text><text x="422" y="26">17</text><text x="472" y="26">18</text><text x="522" y="26">19</text><text x="572" y="26">20</text>
+          </g>
+          <g font-size="6.5" fill="#cfe0d4" letter-spacing=".5"><text x="122" y="36" fill="#173f2e">LEADER</text><text x="172" y="36" fill="#173f2e">LEADER</text></g>
+        </g>
+      </g>
+    </svg>
+    <figcaption>Le due caselle dorate segnano il vertice dei capi di Stato e di governo, 11 e 12 novembre. Fonte: UNCCD e organizzatori.</figcaption>
+  </figure>
+
+  <div class="split">
+    <div class="cols cols-2">
+      <p class="dropcap">Manca meno di due settimane alla COP31, la 31ª Conferenza delle Nazioni Unite sui cambiamenti climatici. Si terrà ad Antalya, in Turchia, dal 9 al 20 novembre 2026, all'Antalya EXPO Centre. Ecco le cose principali da sapere.</p>
+      <h3>Chi guida il vertice</h3>
+      <p>Questa COP ha una formula insolita. La Turchia ospita la conferenza e ne detiene la presidenza, affidata al ministro dell'Ambiente Murat Kurum. L'Australia, che aveva a sua volta chiesto di ospitare l'evento, guida invece i negoziati: il ministro australiano per il clima e l'energia Chris Bowen è stato nominato presidente dei negoziati. Una partnership che è il frutto di un compromesso tra i due Paesi.</p>
+      <h3>I temi in agenda</h3>
+      <p>Le priorità indicate dalla presidenza includono la transizione verso l'energia pulita, l'industria a basse emissioni, le città resilienti agli eventi climatici estremi e l'agricoltura sostenibile con la sicurezza alimentare. Sullo sfondo restano le grandi questioni aperte da anni: quanto e come finanziare i Paesi più vulnerabili, e come accelerare l'uscita dai combustibili fossili.</p>
+      <p>Il vertice arriva in un momento delicato. Proprio in questi giorni l'ONU ha avvertito che gli oceani stanno perdendo parte della loro capacità di assorbire CO₂, e nell'Amazzonia la siccità legata a El Niño alimenta un'ondata di incendi.</p>
+      <h3>Perché ci riguarda</h3>
+      <p>Le decisioni prese alle COP si traducono, anno dopo anno, in leggi europee e nazionali: obiettivi sulle emissioni, regole per l'energia, i trasporti e i rifiuti. Ciò che si decide ad Antalya avrà effetti anche sulle bollette, sulle imprese e sui servizi ambientali in Italia. Seguiremo il vertice giorno per giorno.</p>
+      <div class="fonti"><b>FONTI</b> · UNCCD, <em>«2026 UN Climate Change Conference COP31»</em> · Hürriyet Daily News, <em>«Environment minister says COP31 in Antalya to open new era of climate cooperation»</em> · Hürriyet Daily News, <em>«COP31 Climate Summit set to boost Antalya's tourism»</em> · Trend News Agency, <em>«Türkiye shares details on preparations for COP31 in Antalya»</em></div>
+    </div>
+    <aside>
+      <div class="factbox" style="margin-top:0">
+        <div class="t">COP31 in numeri</div>
+        <div class="row"><b>12</b><span>giorni di conferenza, dal 9 al 20 novembre</span></div>
+        <div class="row"><b>80.000+</b><span>partecipanti attesi</span></div>
+        <div class="row"><b>≈196</b><span>Paesi rappresentati</span></div>
+        <div class="row"><b>1,1 mln</b><span>di m² di area, in gran parte con strutture temporanee</span></div>
+      </div>
+      <div class="who">
+        <div class="who-t">Chi fa cosa</div>
+        <div class="who-r"><b>Turchia</b><span>Ospita e presiede · Murat Kurum, ministro dell'Ambiente</span></div>
+        <div class="who-r"><b>Australia</b><span>Guida i negoziati · Chris Bowen, ministro per il clima e l'energia</span></div>
+      </div>
+      <div class="pull">«Ciò che si decide ad Antalya avrà effetti anche sulle bollette, sulle imprese e sui servizi ambientali in Italia.»</div>
+    </aside>
+  </div>
+
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 3</span></div>
+</section>
+
+<!-- ===================================================== PAGINA 4 ===================================================== -->
+<section class="page">
+  <div class="runhead"><span class="name">Ecologia Oggi</span><span>Biodiversità</span><span>Mercoledì 28 ottobre 2026</span></div>
+
+  <div class="kicker">Biodiversità <span class="where">· Armenia · 2 min di lettura</span></div>
+  <h2 class="hl xl">Biodiversità, a Yerevan il primo bilancio mondiale: meno della metà degli obiettivi è in linea</h2>
+  <p class="deck">Alla COP17 sulla biodiversità i Paesi fanno i conti con gli impegni presi a Montréal nel 2022. Ultimi giorni di negoziato su finanza, sussidi dannosi e controlli.</p>
+
+  <div class="visual two">
+    <div class="panel">
+      <div class="panel-t" style="color:var(--green)">Il primo bilancio · rapporto ONU, 15 ottobre</div>
+      <div class="bars">
+        <div class="bar"><div class="lbl"><span>Paesi che hanno fissato obiettivi nazionali</span><b>quasi 90%</b></div><div class="track"><div class="fill" style="width:90%"></div></div></div>
+        <div class="bar"><div class="lbl"><span>Obiettivi valutati che sono sulla buona strada</span><b>meno della metà</b></div><div class="track"><div class="fill warn" style="width:46%"></div><div class="half"></div></div></div>
+      </div>
+      <div class="cap" style="margin-top:1mm">I piani ci sono, ma non stanno andando abbastanza veloci.</div>
+    </div>
+    <div class="panel">
+      <div class="panel-t" style="color:var(--green)">Il Quadro di Kunming-Montréal</div>
+      <div class="mini mini3">
+        <div><b>23</b><span>obiettivi da raggiungere</span></div>
+        <div><b>30%</b><span>di terre e mari da proteggere</span></div>
+        <div><b>2030</b><span>la scadenza fissata nel 2022</span></div>
+      </div>
+      <div class="cap" style="margin-top:2.4mm">COP17 · Yerevan, 19–30 ottobre. Quattro decisioni già adottate nella prima settimana.</div>
+    </div>
+  </div>
+
+  <div class="cols cols-3">
+    <p class="dropcap">Nel dicembre 2022, a Montréal, quasi tutti i Paesi del mondo si sono impegnati con il Quadro globale per la biodiversità di Kunming-Montréal: 23 obiettivi da raggiungere entro il 2030, tra cui proteggere il 30% delle terre e dei mari del pianeta. Quattro anni dopo, a Yerevan, in Armenia, è arrivato il momento della prima verifica. E il risultato è a metà strada.</p>
+    <h3>Il bilancio: lavori in corso</h3>
+    <p>Il 15 ottobre il Segretario generale dell'ONU António Guterres ha presentato il rapporto State of Biodiversity Action, la prima valutazione globale dei progressi. I numeri dicono due cose:</p>
+    <ul>
+      <li>quasi il 90% dei Paesi ha fissato obiettivi nazionali per la biodiversità;</li>
+      <li>ma meno della metà degli obiettivi valutati è sulla buona strada.</li>
+    </ul>
+    <p>In altre parole: i piani ci sono, ma non stanno andando abbastanza veloci.</p>
+    <h3>La Dichiarazione di Yerevan</h3>
+    <p>Il 16 ottobre, alla vigilia della conferenza, i leader riuniti nel vertice sulla biodiversità hanno adottato la Dichiarazione di Yerevan. Il testo chiede di accelerare l'attuazione degli impegni, aumentare i finanziamenti per la natura, rafforzare la cooperazione internazionale e passare ad azioni concrete per proteggere e ripristinare gli ecosistemi. Ribadisce la missione di fermare e invertire la perdita di biodiversità entro il 2030.</p>
+    <h3>I nodi dell'ultima settimana</h3>
+    <p>La COP17 si è aperta il 19 ottobre e si chiude il 30 ottobre. Secondo il segretariato della Convenzione, nella prima settimana sono già state adottate quattro decisioni. Restano però i temi più difficili:</p>
+    <ul>
+      <li>la finanza per la biodiversità, cioè chi paga e quanto;</li>
+      <li>i sussidi dannosi per la natura, che il quadro globale chiede di ridurre;</li>
+      <li>i meccanismi di controllo e trasparenza sugli impegni dei singoli Paesi;</li>
+      <li>la condivisione dei benefici derivanti dall'uso delle informazioni genetiche digitali (DSI).</li>
+    </ul>
+    <p>L'obiettivo è chiudere un pacchetto di decisioni chiamato "Yerevan Pathway", una sorta di tabella di marcia per rimettere in carreggiata gli impegni del 2030. Torneremo a raccontare l'esito finale della conferenza nei prossimi giorni.</p>
+    <div class="fonti"><b>FONTI</b> · Convenzione sulla diversità biologica (CBD), <em>«Spotlight on Yerevan: Announcements from the 2026 UN Biodiversity Conference»</em> · CBD, pagina ufficiale della Conferenza ONU sulla biodiversità 2026 · Armenpress, <em>«COP17: Yerevan Declaration adopted following leaders' summit»</em> · Earth Negotiations Bulletin (IISD), resoconto del 26 ottobre 2026</div>
+  </div>
+
+  <div class="colophon">
+    <div class="mark">Ecologia<br>Oggi</div>
+    <p><b>Il giornale sull'ambiente, ogni mattina.</b> A cura della redazione di Servizi Ecologici. Gli articoli sono sintesi originali scritte dalla redazione a partire dalle fonti citate in fondo a ogni pezzo, a cui rimandiamo per approfondire. © 2026 Servizi Ecologici.</p>
+  </div>
+
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 4</span></div>
+</section>
+
+<!-- ===================================================== PAGINA 5 ===================================================== -->
+<section class="page">
+  <div class="runhead"><span class="name">Ecologia Oggi</span><span>Rifiuti e riciclo</span><span>Mercoledì 28 ottobre 2026</span></div>
+
+  <div class="kicker gold">Rifiuti e riciclo <span class="where">· Italia · 2 min di lettura</span></div>
+  <h2 class="hl xl">Riciclo della plastica, l'Italia in affanno: impianti in crisi e magazzini pieni</h2>
+  <p class="deck">La plastica vergine importata costa meno di quella riciclata e una parte del materiale raccolto non trova più sbocco. Comuni, Regioni e riciclatori chiedono misure urgenti al ministero dell'Ambiente.</p>
+
+  <figure class="figure">
+    <svg viewBox="0 0 640 150" role="img" aria-label="La filiera della plastica: la raccolta funziona, ma un quarto del materiale selezionato non trova sbocco e la plastica vergine importata costa meno">
+      <rect width="640" height="150" fill="#efe8d6"/>
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1b1d1a"/></marker></defs>
+      <g font-family="Inter, sans-serif">
+        <g transform="translate(18,22)">
+          <rect width="120" height="62" fill="#1f5a3f"/>
+          <text x="10" y="18" font-size="7" font-weight="700" letter-spacing="1" fill="#cfe0d4">1 · A MONTE</text>
+          <text x="10" y="37" font-size="13" font-weight="700" fill="#f8f4ea">Raccolta</text>
+          <text x="10" y="52" font-size="7.5" fill="#cfe0d4">Gli italiani separano con cura</text>
+        </g>
+        <g transform="translate(176,22)">
+          <rect width="120" height="62" fill="#f8f4ea" stroke="#1b1d1a"/>
+          <text x="10" y="18" font-size="7" font-weight="700" letter-spacing="1" fill="#5d6157">2</text>
+          <text x="10" y="37" font-size="13" font-weight="700" fill="#1b1d1a">Selezione</text>
+          <text x="10" y="52" font-size="7.5" fill="#5d6157">Il materiale viene diviso</text>
+        </g>
+        <g transform="translate(334,22)">
+          <rect width="120" height="62" fill="#f8f4ea" stroke="#1b1d1a"/>
+          <text x="10" y="18" font-size="7" font-weight="700" letter-spacing="1" fill="#5d6157">3</text>
+          <text x="10" y="37" font-size="13" font-weight="700" fill="#1b1d1a">Riciclo</text>
+          <text x="10" y="52" font-size="7.5" fill="#b4471f" font-weight="700">−12.000 t/mese di capacità</text>
+        </g>
+        <g transform="translate(492,22)">
+          <rect width="130" height="62" fill="#a4782a"/>
+          <text x="10" y="18" font-size="7" font-weight="700" letter-spacing="1" fill="#f6e7c8">4 · A VALLE</text>
+          <text x="10" y="37" font-size="13" font-weight="700" fill="#f8f4ea">Mercato</text>
+          <text x="10" y="52" font-size="7.5" fill="#f6e7c8">Il riciclato resta invenduto</text>
+        </g>
+        <g stroke="#1b1d1a" stroke-width="1.3" marker-end="url(#ar)">
+          <line x1="141" y1="53" x2="172" y2="53"/><line x1="299" y1="53" x2="330" y2="53"/><line x1="457" y1="53" x2="488" y2="53"/>
+          <path d="M236 86 V 116 H 270" fill="none"/>
+        </g>
+        <text x="278" y="112" font-size="10" font-weight="700" fill="#b4471f">¼ del selezionato non trova sbocco</text>
+        <text x="278" y="125" font-size="8" fill="#5d6157">e finisce a occupare i magazzini</text>
+        <path d="M610 142 V 90" stroke="#a4782a" stroke-width="1.3" stroke-dasharray="3 2" marker-end="url(#ar)"/>
+        <text x="602" y="110" font-size="7.5" fill="#1b1d1a" text-anchor="end" font-weight="700">Plastica vergine extra UE,</text>
+        <text x="602" y="121" font-size="7.5" fill="#1b1d1a" text-anchor="end">più economica del riciclato</text>
+      </g>
+    </svg>
+    <figcaption>Il problema, spiegano Regioni e operatori, non è a monte ma a valle della raccolta. Elaborazione di Ecologia Oggi.</figcaption>
+  </figure>
+
+  <div class="cols cols-3">
+    <p class="dropcap">Gli italiani separano la plastica con cura, ma a valle della raccolta qualcosa si è inceppato. La filiera del riciclo della plastica attraversa una crisi che le associazioni del settore definiscono ormai un'emergenza.</p>
+    <h3>Il problema non è la raccolta</h3>
+    <p>Secondo la Regione Veneto, la difficoltà non sta a monte ma a valle: sul mercato arrivano grandi quantità di plastica vergine dai Paesi extra UE a prezzi più bassi di quella riciclata. Così i prodotti delle aziende italiane del riciclo restano invenduti, e circa un quarto del materiale selezionato non trova sbocco, finendo a occupare i magazzini.</p>
+    <p>Secondo i dati presentati al tavolo ministeriale di fine luglio, nell'ultimo anno l'Italia ha perso circa 12.000 tonnellate al mese di capacità di trattamento della plastica.</p>
+    <h3>Chi chiede cosa</h3>
+    <ul>
+      <li><b>ASSORIMAP</b>, l'associazione dei riciclatori, a settembre ha scritto alla Presidente del Consiglio. Tra le richieste: anticipare al 2027 l'obbligo di contenuto riciclato negli imballaggi, riconoscere i crediti di carbonio ed estendere i certificati bianchi al settore.</li>
+      <li><b>Utilitalia e ANCI</b>, che rappresentano aziende dei servizi pubblici e Comuni, chiedono controlli doganali più severi sulle importazioni, la piena applicazione della direttiva europea sulla plastica monouso (SUP), una revisione della Plastic Tax e strumenti di sostegno per la plastica riciclata certificata.</li>
+      <li><b>Le Regioni</b> hanno presentato le proprie proposte al tavolo del ministero.</li>
+    </ul>
+    <h3>Cosa ha deciso finora il ministero</h3>
+    <p>Il ministero dell'Ambiente e della Sicurezza energetica (MASE) segue la questione con un tavolo di monitoraggio attivo dall'ottobre 2025, con ISPRA, ENEA e le associazioni di filiera. Sono già partiti un coinvolgimento dell'ANAC sui Criteri ambientali minimi negli appalti e un protocollo con l'Agenzia delle Dogane sui controlli all'import. Le misure a tutela dei Comuni, sui tempi di ritiro e sugli stoccaggi risultano in gran parte accolte; restano invece da valutare, senza una data, quelle per i riciclatori: contributi sulle poliolefine miste, credito d'imposta sulle materie prime seconde e un fondo per modernizzare gli impianti di selezione.</p>
+    <h3>Perché conta</h3>
+    <p>Se il riciclo non è economicamente sostenibile, la raccolta differenziata perde senso e la plastica rischia di finire in discarica o negli inceneritori. È una sfida che riguarda da vicino chiunque lavori nei servizi ambientali, e che si gioca anche sulle regole europee per gli imballaggi.</p>
+    <div class="fonti"><b>FONTI</b> · Regione Veneto, comunicato sulla crisi della filiera della plastica · Renewable Matter, <em>«Riciclo plastica, la crisi peggiora: Utilitalia e ANCI chiedono misure di emergenza»</em> · Teleborsa, <em>«Riciclo della plastica, ASSORIMAP scrive alla Premier Meloni: la crisi ormai è un'emergenza»</em> (24 settembre 2026)</div>
+  </div>
+
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 5</span></div>
+</section>
+
+<!-- ===================================================== PAGINA 6 ===================================================== -->
+<section class="page">
+  <div class="runhead"><span class="name">Ecologia Oggi</span><span>Leggi e politica · Agenda</span><span>Mercoledì 28 ottobre 2026</span></div>
+
+  <div class="kicker">Leggi e politica <span class="where">· Italia · 2 min di lettura</span></div>
+  <h2 class="hl xl" style="font-size:28pt">«Giudizio Universale», la prima causa climatica contro lo Stato italiano torna in tribunale</h2>
+  <p class="deck">Oltre 200 tra associazioni e cittadini chiedono alla Corte d'Appello di Roma di riconoscere le responsabilità dello Stato nella crisi climatica. In primo grado il tribunale si era dichiarato non competente.</p>
+
+  <div class="timeline">
+    <div class="tl"><b>2021</b><span>A Sud e oltre 200 ricorrenti avviano la causa</span></div>
+    <div class="tl"><b>Febbraio 2024</b><span>Il Tribunale civile di Roma: «difetto di giurisdizione»</span></div>
+    <div class="tl now"><b>21 ottobre 2026</b><span>La causa torna davanti alla Corte d'Appello</span></div>
+    <div class="tl next"><b>Primavera 2027</b><span>Decisione attesa, non prima</span></div>
+  </div>
+
+  <div class="split">
+    <div class="cols cols-2">
+      <p class="dropcap">Si chiama «Giudizio Universale» ed è la prima causa climatica mai intentata contro lo Stato italiano. Il 21 ottobre è tornata davanti alla Corte d'Appello di Roma, in un passaggio che potrebbe decidere se in Italia un giudice può valutare le politiche climatiche del governo.</p>
+      <h3>Chi la promuove e cosa chiede</h3>
+      <p>La causa è stata avviata nel 2021 dall'associazione ambientalista A Sud insieme a oltre 200 tra associazioni e cittadini, tra cui il climatologo Luca Mercalli. Nella richiesta originale i ricorrenti chiedevano che lo Stato fosse riconosciuto responsabile di contribuire alla crisi climatica e condannato a ridurre le emissioni del 92% entro il 2030 rispetto al 1990.</p>
+      <h3>Il primo grado: «non posso decidere»</h3>
+      <p>Nel febbraio 2024 il Tribunale civile di Roma aveva dichiarato la causa inammissibile per difetto di giurisdizione: secondo i giudici, le scelte del governo sul clima non possono essere valutate da un tribunale civile. Una decisione che, secondo l'avvocato di A Sud Luca Saltalamacchia, non ha precedenti in un Paese europeo.</p>
+      <h3>Su cosa puntano in appello</h3>
+      <p>I ricorrenti chiedono ora che la Corte entri nel merito. A sostegno portano nuovi elementi:</p>
+      <ul>
+        <li>dati sulle morti in eccesso legate al caldo in Italia e previsioni su desertificazione e alluvioni;</li>
+        <li>la sentenza del 2024 della Corte europea dei diritti dell'uomo nel caso delle "KlimaSeniorinnen" svizzere, che ha collegato la tutela del clima ai diritti umani;</li>
+        <li>la riforma costituzionale del 2022, che impegna la Repubblica a tutelare ambiente, biodiversità ed ecosistemi anche nell'interesse delle future generazioni;</li>
+        <li>una decisione della Corte di Cassazione in un'altra causa climatica, quella di Greenpeace contro Eni, che ha escluso che i giudici non abbiano alcuna competenza su questi temi.</li>
+      </ul>
+      <h3>E adesso?</h3>
+      <p>Secondo le previsioni riportate dalla stampa, una decisione non è attesa prima della primavera 2027. Nel mondo le cause climatiche contro i governi sono circa 160, e in diversi Paesi europei hanno già portato a condanne. L'esito romano dirà se anche l'Italia seguirà questa strada.</p>
+      <div class="fonti"><b>FONTI</b> · AFP via eNCA, <em>«Court to rule on first climate lawsuit against Italian state»</em> (18 ottobre 2026) · Gazzetta di Parma, <em>«Causa climatica contro lo Stato il 21 ottobre in Corte d'Appello a Roma»</em> (16 ottobre 2026) · A Sud, <em>«Giudizio Universale arriva in Corte d'Appello»</em></div>
+    </div>
+    <aside>
+      <div class="stack">
+        <div class="stat green"><div class="v">200+</div><div class="l">associazioni e cittadini ricorrenti</div></div>
+        <div class="stat gold"><div class="v">−92%</div><div class="l">il taglio di emissioni chiesto entro il 2030, rispetto al 1990</div></div>
+        <div class="stat"><div class="v">≈160</div><div class="l">cause climatiche contro i governi nel mondo</div></div>
+      </div>
+
+      <div class="aside-title" style="margin-top:4mm">Agenda verde</div>
+      <div class="agenda">
+        <div class="item"><div class="d">30<small>ottobre</small></div><p><b>COP17, Yerevan.</b> Si chiude la conferenza ONU sulla biodiversità.</p></div>
+        <div class="item"><div class="d">9–20<small>novembre</small></div><p><b>COP31, Antalya.</b> La conferenza ONU sul clima; leader l'11 e 12.</p></div>
+        <div class="item" style="border-bottom:0"><div class="d">2027<small>primavera</small></div><p><b>Giudizio Universale.</b> Attesa la decisione d'appello.</p></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 6</span></div>
+</section>
+
+</body>
+</html>
