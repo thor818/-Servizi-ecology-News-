@@ -66,27 +66,34 @@
     display: flex; justify-content: space-between; align-items: center;
     font-family: Inter, sans-serif; font-size: 7pt; letter-spacing: .08em; text-transform: uppercase;
     color: var(--muted);
-    padding-bottom: 2.2mm; border-bottom: 0.4pt solid var(--rule);
+    padding-bottom: 1.8mm; border-bottom: 0.4pt solid var(--rule);
   }
   .topline b { color: var(--ink); font-weight: 700; }
-  .masthead { text-align: center; padding: 3mm 0 2.4mm; position: relative; }
+  .masthead {
+    display: grid; grid-template-columns: 24mm 1fr 24mm; align-items: center; gap: 4mm;
+    padding: 2mm 0 1.6mm; text-align: center;
+  }
+  .masthead .over {
+    display: flex; align-items: center; gap: 3mm; justify-content: center;
+    font-family: Inter, sans-serif; font-size: 6.6pt; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--muted);
+  }
+  .masthead .over::before, .masthead .over::after { content: ""; flex: 0 0 14mm; border-top: 0.6pt solid var(--hair); }
   .masthead h1 {
     font-family: "Playfair Display", serif; font-weight: 900;
-    font-size: 54pt; line-height: .95; letter-spacing: -.01em;
+    font-size: 56pt; line-height: .9; letter-spacing: -.015em; margin: .6mm 0 0; white-space: nowrap;
   }
-  .masthead h1 .leaf { display: inline-block; width: .5em; height: .5em; vertical-align: .12em; margin: 0 .04em; }
+  .masthead h1 em, .runhead .name em { font-style: italic; font-weight: 700; color: var(--green); letter-spacing: -.01em; }
   .masthead .motto {
     font-family: "Playfair Display", serif; font-style: italic; font-weight: 600;
-    font-size: 11.5pt; color: var(--green); margin-top: 1.5mm;
+    font-size: 10.5pt; color: var(--muted); margin-top: 2.6mm;
   }
+  .seal { width: 24mm; height: 24mm; display: block; }
   .ear {
-    position: absolute; top: 6mm; width: 33mm; padding: 2mm 2.5mm;
-    border: 0.6pt solid var(--rule);
-    font-family: Inter, sans-serif; font-size: 6.4pt; line-height: 1.35; text-align: left;
+    border-top: 2.2pt solid var(--rule); border-bottom: 0.6pt solid var(--rule); padding: 1.6mm 0;
+    font-family: Inter, sans-serif; font-size: 6.2pt; line-height: 1.35; text-align: left; color: var(--muted);
   }
-  .ear strong { display: block; font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; margin-bottom: .6mm; color: var(--green); }
-  .ear.left { left: 0; }
-  .ear.right { right: 0; }
+  .ear b { display: block; font-family: "Playfair Display", serif; font-size: 13pt; line-height: 1; color: var(--green); }
+  .ear strong { display: block; font-size: 6.2pt; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: .8mm; }
   .navbar {
     display: flex; justify-content: space-between;
     border-top: 2.2pt solid var(--rule); border-bottom: 0.6pt solid var(--rule);
@@ -159,7 +166,7 @@
   .rule2.thin { border-top-width: 0.6pt; }
 
   /* ---------- prima pagina ---------- */
-  .front { display: grid; grid-template-columns: 1fr 54mm; gap: 6mm; margin: 3mm 0 3mm; padding-bottom: 2.4mm; border-bottom: 2.2pt solid var(--rule); }
+  .front { display: grid; grid-template-columns: 1fr 54mm; gap: 6mm; margin: 2.6mm 0 2.6mm; padding-bottom: 2.4mm; border-bottom: 2.2pt solid var(--rule); }
   .front + .cols { font-size: 8.8pt; }
   .page + .page .cols { font-size: 9.7pt; line-height: 1.46; }
   .front .deck { font-size: 10.2pt; margin: 1.6mm 0 2.4mm; }
@@ -292,8 +299,21 @@
   </div>
 
   <header class="masthead">
-    <h1>Ecologia<svg class="leaf" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 34 C6 14 18 5 36 4 C35 22 26 34 6 34 Z" fill="#1f5a3f"/><path d="M6 34 C14 24 22 16 32 9" stroke="#f8f4ea" stroke-width="2" fill="none"/></svg>Oggi</h1>
-    <div class="motto">Notizie dal pianeta, ogni mattina</div>
+    <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Sigillo di Servizi Ecologici">
+      <defs><path id="ring" d="M50 50 m-37 0 a37 37 0 1 1 74 0 a37 37 0 1 1 -74 0"/></defs>
+      <circle cx="50" cy="50" r="48" fill="none" stroke="#1b1d1a" stroke-width="1.2"/>
+      <circle cx="50" cy="50" r="44.5" fill="none" stroke="#1b1d1a" stroke-width=".5"/>
+      <text font-family="Inter, sans-serif" font-size="8.4" font-weight="700" letter-spacing="2.1" fill="#1b1d1a"><textPath href="#ring">SERVIZI ECOLOGICI · DAL 2026 · </textPath></text>
+      <circle cx="50" cy="50" r="27" fill="#1f5a3f"/>
+      <path d="M36 64 C36 46 46 37 64 36 C63 54 54 64 36 64 Z" fill="#f8f4ea"/>
+      <path d="M36 64 C44 55 51 48 60 40" stroke="#1f5a3f" stroke-width="2" fill="none"/>
+    </svg>
+    <div>
+      <div class="over">Il quotidiano dell'ambiente</div>
+      <h1>Ecologia <em>Oggi</em></h1>
+      <div class="motto">Notizie dal pianeta, ogni mattina</div>
+    </div>
+    <div class="ear"><strong>Edizione del mattino</strong><b>6 notizie</b>dal mondo e dall'Italia, con le fonti sempre citate</div>
   </header>
 
   <nav class="navbar">
@@ -385,7 +405,7 @@
 
 <!-- ===================================================== PAGINA 2 ===================================================== -->
 <section class="page">
-  <div class="runhead"><span class="name">Ecologia Oggi</span><span>Foreste e suolo</span><span>Mercoledì 28 ottobre 2026</span></div>
+  <div class="runhead"><span class="name">Ecologia <em>Oggi</em></span><span>Foreste e suolo</span><span>Mercoledì 28 ottobre 2026</span></div>
 
   <div class="kicker fire">Foreste e suolo <span class="where">· Brasile · 2 min di lettura</span></div>
   <h2 class="hl xl">Amazzonia in fiamme: incendi su del 62% mentre la deforestazione tocca il minimo storico</h2>
@@ -445,7 +465,7 @@
 
 <!-- ===================================================== PAGINA 3 ===================================================== -->
 <section class="page">
-  <div class="runhead"><span class="name">Ecologia Oggi</span><span>Clima</span><span>Mercoledì 28 ottobre 2026</span></div>
+  <div class="runhead"><span class="name">Ecologia <em>Oggi</em></span><span>Clima</span><span>Mercoledì 28 ottobre 2026</span></div>
 
   <div class="kicker">Clima <span class="where">· Turchia · 2 min di lettura</span></div>
   <h2 class="hl xl">COP31 di Antalya: tutto quello che c'è da sapere sul vertice del clima di novembre</h2>
@@ -514,7 +534,7 @@
 
 <!-- ===================================================== PAGINA 4 ===================================================== -->
 <section class="page">
-  <div class="runhead"><span class="name">Ecologia Oggi</span><span>Biodiversità</span><span>Mercoledì 28 ottobre 2026</span></div>
+  <div class="runhead"><span class="name">Ecologia <em>Oggi</em></span><span>Biodiversità</span><span>Mercoledì 28 ottobre 2026</span></div>
 
   <div class="kicker">Biodiversità <span class="where">· Armenia · 2 min di lettura</span></div>
   <h2 class="hl xl">Biodiversità, a Yerevan il primo bilancio mondiale: meno della metà degli obiettivi è in linea</h2>
@@ -564,7 +584,7 @@
   </div>
 
   <div class="colophon">
-    <div class="mark">Ecologia<br>Oggi</div>
+    <div class="mark">Ecologia<br><em style="color:var(--green);font-weight:700">Oggi</em></div>
     <p><b>Il giornale sull'ambiente, ogni mattina.</b> A cura della redazione di Servizi Ecologici. Gli articoli sono sintesi originali scritte dalla redazione a partire dalle fonti citate in fondo a ogni pezzo, a cui rimandiamo per approfondire. © 2026 Servizi Ecologici.</p>
   </div>
 
@@ -573,7 +593,7 @@
 
 <!-- ===================================================== PAGINA 5 ===================================================== -->
 <section class="page">
-  <div class="runhead"><span class="name">Ecologia Oggi</span><span>Rifiuti e riciclo</span><span>Mercoledì 28 ottobre 2026</span></div>
+  <div class="runhead"><span class="name">Ecologia <em>Oggi</em></span><span>Rifiuti e riciclo</span><span>Mercoledì 28 ottobre 2026</span></div>
 
   <div class="kicker gold">Rifiuti e riciclo <span class="where">· Italia · 2 min di lettura</span></div>
   <h2 class="hl xl">Riciclo della plastica, l'Italia in affanno: impianti in crisi e magazzini pieni</h2>
@@ -645,7 +665,7 @@
 
 <!-- ===================================================== PAGINA 6 ===================================================== -->
 <section class="page">
-  <div class="runhead"><span class="name">Ecologia Oggi</span><span>Leggi e politica · Agenda</span><span>Mercoledì 28 ottobre 2026</span></div>
+  <div class="runhead"><span class="name">Ecologia <em>Oggi</em></span><span>Leggi e politica · Agenda</span><span>Mercoledì 28 ottobre 2026</span></div>
 
   <div class="kicker">Leggi e politica <span class="where">· Italia · 2 min di lettura</span></div>
   <h2 class="hl xl" style="font-size:28pt">«Giudizio Universale», la prima causa climatica contro lo Stato italiano torna in tribunale</h2>
