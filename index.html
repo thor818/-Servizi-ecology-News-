@@ -100,7 +100,7 @@
     padding: 1.6mm 1mm;
     font-family: Inter, sans-serif; font-size: 7pt; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
   }
-  .navbar span:not(:last-child)::after { content: "·"; margin-left: 3.2mm; color: var(--hair); }
+  .navbar span:not(:last-child)::after { content: "·"; margin-left: 2mm; color: var(--hair); }
 
   .runhead {
     display: flex; justify-content: space-between; align-items: baseline;
@@ -298,10 +298,44 @@
   .also-good { margin-top: auto; margin-bottom: 3mm; background: var(--green-soft); border-top: 2.2pt solid var(--green); padding: 3mm 4mm; }
   .also-good + .foot { margin-top: 0; }
   .ag-t { font-family: Inter, sans-serif; font-size: 6.8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 2mm; }
-  .ag-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+  .ag-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5mm; }
   .ag-row b { display: block; font-family: "Playfair Display", serif; font-weight: 900; font-size: 18pt; line-height: 1; color: var(--green); }
   .ag-row span { display: block; font-size: 8.2pt; line-height: 1.3; margin-top: 1mm; }
 
+  /* tono della notizia */
+  .tone { margin-left: 2.4mm; padding: .3mm 1.6mm; border-radius: 1mm; font-size: 6pt; letter-spacing: .08em; }
+  .tone.pos { background: var(--green); color: #f3efe2; }
+  .tone.mix { background: #e9dfc6; color: #6b5317; }
+  .tone.neg { background: #f1d8cc; color: var(--fire); }
+  .howto { border: 0.6pt solid var(--rule); padding: 2.6mm 3mm; margin-top: 3mm; }
+  .howto-t { font-family: Inter, sans-serif; font-size: 6.8pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 1.4mm; }
+  .howto ol { margin: 0; padding-left: 4mm; font-size: 8.2pt; line-height: 1.32; }
+  .howto li { margin-bottom: 1mm; }
+  .rules { break-inside: avoid; background: var(--green); color: #f3efe2; padding: 2.6mm 3mm; margin: 2mm 0; text-align: left; }
+  .rules-t { font-family: Inter, sans-serif; font-size: 6.8pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #bcd6c4; margin-bottom: 1.2mm; }
+  .cols .rules ul { margin: 0; }
+  .cols .rules li { font-size: 8.4pt; line-height: 1.32; }
+  .cols .rules li::before { background: #bcd6c4; }
+
+  .lim-r { display: grid; grid-template-columns: 34mm 1fr 10mm; gap: 2mm; align-items: center; padding: 1.1mm 0; border-bottom: 0.4pt solid var(--hair); font-family: Inter, sans-serif; font-size: 7pt; }
+  .lim-r .barw { height: 3mm; background: #e2dccb; position: relative; }
+  .lim-r .barw i { position: absolute; inset: 0 auto 0 0; background: var(--ocean); min-width: 1px; }
+  .lim-r b { font-family: "Playfair Display", serif; font-size: 11pt; text-align: right; }
+  .lim-r.it { font-weight: 700; }
+  .lim-r.it .barw i { background: var(--green); }
+  .rulesrow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 0 0 4mm; }
+  .rulesrow > div { border-top: 1.4pt solid var(--rule); padding-top: 1.6mm; }
+  .rulesrow b { display: block; font-family: "Playfair Display", serif; font-size: 10.5pt; line-height: 1.15; margin: 1mm 0 .4mm; }
+  .rulesrow span:last-child { font-size: 7.8pt; color: var(--muted); }
+  .rulesrow .no, .rulesrow .lim2, .rulesrow .ok { display: inline-block; font-family: Inter, sans-serif; font-size: 6pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .3mm 1.4mm; color: #f8f4ea; }
+  .rulesrow .no { background: var(--fire); } .rulesrow .lim2 { background: var(--gold); } .rulesrow .ok { background: var(--green); }
+
+  .page + .page .cols.roomy { font-size: 10.3pt; line-height: 1.5; }
+  .gloss { margin-top: auto; margin-bottom: 3mm; background: var(--green-soft); border-top: 2.2pt solid var(--green); padding: 3mm 4mm; }
+  .gloss + .foot { margin-top: 0; }
+  .gl-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5mm; }
+  .gl-row b { display: block; font-family: "Playfair Display", serif; font-size: 11.5pt; color: var(--green); margin-bottom: .8mm; }
+  .gl-row span { display: block; font-size: 8.2pt; line-height: 1.32; }
   .colophon {
     margin-top: auto; margin-bottom: 3mm; border: 0.6pt solid var(--rule); padding: 3.4mm 4mm; display: grid; grid-template-columns: auto 1fr; gap: 4mm; align-items: center;
   }
@@ -338,7 +372,7 @@
   </header>
 
   <nav class="navbar">
-    <span>Clima</span><span>Energia</span><span>Biodiversità</span><span>Oceani e acque</span><span>Foreste e suolo</span><span>Rifiuti e riciclo</span><span>Leggi e politica</span>
+    <span>Clima</span><span>Energia</span><span>Animali</span><span>Acqua</span><span>A tavola</span><span>Benessere</span><span>Biodiversità</span><span>Oceani</span><span>Foreste</span><span>Rifiuti</span><span>Leggi</span>
   </nav>
 
   <div class="front">
@@ -476,6 +510,7 @@
       <div><b>−42%</b><span>la deforestazione in Amazzonia, al minimo dal 1988 · <i>p. 3</i></span></div>
       <div><b>407 mln t</b><span>di CO₂ all'anno catturate da mangrovie e praterie marine · <i>p. 1</i></span></div>
       <div><b>≈90%</b><span>dei Paesi ha fissato obiettivi per la biodiversità · <i>p. 5</i></span></div>
+      <div><b>7.000+</b><span>tartarughe marine nate sulle spiagge italiane · <i>p. 8</i></span></div>
     </div>
   </div>
 
@@ -793,6 +828,253 @@
   </div>
 
   <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 7</span></div>
+</section>
+
+<!-- ===================================================== ANIMALI · ACQUA ===================================================== -->
+<section class="page">
+  <div class="runhead"><span class="name">Ecologia <em>Oggi</em></span><span>Animali</span><span>Mercoledì 28 ottobre 2026</span></div>
+
+  <div class="kicker">Animali <span class="where">· Italia · 2 min di lettura</span><span class="tone pos">▲ Buona notizia</span></div>
+  <h2 class="hl xl">Tartarughe marine, un'estate di nascite: oltre 7.000 piccoli sulle spiagge italiane</h2>
+  <p class="deck">Grazie a centinaia di volontari e alle segnalazioni dei bagnanti, le uova di Caretta caretta sono state protette dalla Sicilia alla Puglia. Ma il numero di nidi è più basso del record dell'anno scorso.</p>
+
+  <figure class="figure">
+    <svg viewBox="0 0 640 160" role="img" aria-label="Tartarughe marine in Italia: oltre 700 nidi nel 2025, circa 280 a inizio agosto 2026, oltre 7.000 piccoli nati nei nidi seguiti dal WWF">
+      <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16455f"/><stop offset="1" stop-color="#2c7396"/></linearGradient></defs>
+      <rect width="640" height="160" fill="url(#sky)"/>
+      <circle cx="560" cy="34" r="16" fill="#f8f4ea" opacity=".9"/>
+      <path d="M0 96 Q 80 88 160 96 T 320 96 T 480 96 T 640 96 V 160 H 0 Z" fill="#e7d6ae"/>
+      <path d="M0 96 Q 80 88 160 96 T 320 96 T 480 96 T 640 96" stroke="#f8f4ea" stroke-width="2" fill="none" opacity=".7"/>
+      <g fill="#1f5a3f">
+        <g transform="translate(70,118) rotate(-35)"><ellipse rx="9" ry="7"/><circle cx="10" cy="0" r="3.4"/><ellipse cx="-2" cy="-8" rx="5" ry="2" transform="rotate(-30)"/><ellipse cx="-2" cy="8" rx="5" ry="2" transform="rotate(30)"/></g>
+        <g transform="translate(118,132) rotate(-50)"><ellipse rx="8" ry="6"/><circle cx="9" cy="0" r="3"/><ellipse cx="-2" cy="-7" rx="4.5" ry="1.8" transform="rotate(-30)"/><ellipse cx="-2" cy="7" rx="4.5" ry="1.8" transform="rotate(30)"/></g>
+        <g transform="translate(160,112) rotate(-40)"><ellipse rx="8" ry="6"/><circle cx="9" cy="0" r="3"/><ellipse cx="-2" cy="-7" rx="4.5" ry="1.8" transform="rotate(-30)"/><ellipse cx="-2" cy="7" rx="4.5" ry="1.8" transform="rotate(30)"/></g>
+      </g>
+      <g font-family="Playfair Display, serif" font-weight="900" fill="#f8f4ea">
+        <text x="220" y="52" font-size="34">7.000+</text>
+        <text x="400" y="52" font-size="34" fill="#cfe4ee">700+</text>
+        <text x="520" y="138" font-size="26" fill="#1f5a3f">≈280</text>
+      </g>
+      <g font-family="Inter, sans-serif" font-size="8" letter-spacing=".6">
+        <text x="222" y="66" fill="#f8f4ea">PICCOLI NATI NEI NIDI</text><text x="222" y="77" fill="#f8f4ea">SEGUITI DAL WWF</text>
+        <text x="402" y="66" fill="#cfe4ee">NIDI NEL 2025,</text><text x="402" y="77" fill="#cfe4ee">L'ANNO DEL RECORD</text>
+        <text x="420" y="152" fill="#1b1d1a" text-anchor="start">NIDI A INIZIO AGOSTO 2026 →</text>
+      </g>
+    </svg>
+    <figcaption>Fonti: WWF via Agenzia DIRE (settembre 2026), AGI (agosto 2026), Legambiente (2025). Elaborazione di Ecologia Oggi.</figcaption>
+  </figure>
+
+  <div class="split">
+    <div class="cols cols-2 roomy">
+      <p class="dropcap">È stata un'estate di schiuse sulle spiagge del Sud. Secondo il bilancio del WWF diffuso a metà settembre, i volontari hanno censito 179 deposizioni di tartaruga marina Caretta caretta e seguito 96 schiuse, da cui sono nati oltre 7.000 piccoli. I nidi più numerosi sono in Sicilia, soprattutto nelle province di Siracusa e Trapani, seguiti da Calabria, Puglia e Basilicata.</p>
+      <p>«Un importante segnale positivo per la conservazione della Caretta caretta nel Mediterraneo», ha commentato Luigi Agresti, responsabile dei progetti WWF per la tutela delle tartarughe marine. Decisive le segnalazioni di cittadini e turisti, e il lavoro con Capitanerie di Porto e gestori degli stabilimenti.</p>
+      <h3>Meno nidi del 2025, ma non è un allarme</h3>
+      <p>A inizio agosto i nidi censiti in Italia erano circa 280, meno dello stesso periodo del 2025, l'anno del record con oltre 700 nidi. Secondo il progetto Life Turtlenest il rallentamento non cambia il quadro di forte espansione dell'ultimo decennio: le femmine non depongono ogni anno, ma hanno bisogno di due o tre anni per recuperare le energie.</p>
+      <h3>Le minacce</h3>
+      <p>Luci artificiali che disorientano i piccoli, pulizia meccanica delle spiagge, folla e ostacoli sulla sabbia, effetti del clima sulle coste. Con il progetto LIFE Adapts e l'Università di Pisa, il WWF ha applicato sette trasmettitori satellitari a femmine nidificanti per capire dove si spostano.</p>
+      <div class="fonti"><b>FONTI</b> · Agenzia DIRE, <em>«Tartaruga Caretta caretta, estate del 2026: in Italia nati 7 mila piccoli»</em> (12 settembre 2026) · AGI, nidi di tartaruga marina in Italia (8 agosto 2026) · Legambiente, bilancio della stagione 2025</div>
+    </div>
+    <aside>
+      <div class="factbox" style="margin-top:0">
+        <div class="t">L'estate 2026 in numeri</div>
+        <div class="row"><b>7.000+</b><span>piccoli nati</span></div>
+        <div class="row"><b>179</b><span>deposizioni censite dai volontari WWF</span></div>
+        <div class="row"><b>96</b><span>schiuse seguite fino a metà settembre</span></div>
+      </div>
+      <div class="howto">
+        <div class="howto-t">Se trovi un nido</div>
+        <ol>
+          <li>Non toccare le uova né le tracce sulla sabbia.</li>
+          <li>Resta a distanza e tieni lontani cani e curiosi.</li>
+          <li>Segnalalo alla Capitaneria di Porto (numero 1530).</li>
+          <li>Di sera, niente luci puntate verso la spiaggia.</li>
+        </ol>
+      </div>
+      <div class="pull" style="margin-top:3mm">«Un importante segnale positivo per la conservazione della Caretta caretta nel Mediterraneo.»<small>Luigi Agresti, WWF</small></div>
+    </aside>
+  </div>
+
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 8</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span class="name">Ecologia <em>Oggi</em></span><span>Acqua</span><span>Mercoledì 28 ottobre 2026</span></div>
+
+  <div class="kicker ocean">Acqua <span class="where">· Italia ed Europa · 2 min di lettura</span><span class="tone mix">● Luci e ombre</span></div>
+  <h2 class="hl xl">PFAS nell'acqua del rubinetto: le nuove regole europee e il rinvio italiano</h2>
+  <p class="deck">Dal 12 gennaio 2026 tutti i Paesi Ue devono misurare gli "inquinanti eterni" nell'acqua potabile. L'Italia si era data limiti più severi, ma ne ha rinviato l'applicazione.</p>
+
+  <div class="visual two" style="grid-template-columns: 1.35fr 1fr">
+    <div class="panel">
+      <div class="panel-t" style="color:var(--ocean)">I limiti a confronto · nanogrammi per litro</div>
+      <div class="lim">
+        <div class="lim-r"><span class="who2">Ue · PFAS totali</span><span class="barw"><i style="width:100%"></i></span><b>500</b></div>
+        <div class="lim-r"><span class="who2">Ue · somma di 20 PFAS</span><span class="barw"><i style="width:20%"></i></span><b>100</b></div>
+        <div class="lim-r it"><span class="who2">Italia · somma di 4 PFAS*</span><span class="barw"><i style="width:4%"></i></span><b>20</b></div>
+        <div class="lim-r"><span class="who2">Svezia · 4 PFAS</span><span class="barw"><i style="width:.8%"></i></span><b>4</b></div>
+        <div class="lim-r"><span class="who2">Danimarca · 4 PFAS</span><span class="barw"><i style="width:.4%"></i></span><b>2</b></div>
+      </div>
+      <div class="cap" style="margin-top:1.4mm">* Limite italiano rinviato di sei mesi dalla legge di Bilancio 2026. Più basso il numero, più severa la regola.</div>
+    </div>
+    <div class="panel">
+      <div class="panel-t" style="color:var(--fire)">Quanto sono diffusi</div>
+      <div class="big" style="color:var(--fire)">79%</div>
+      <div class="cap">dei campioni di acqua potabile analizzati da Greenpeace nel 2024 conteneva PFAS</div>
+      <div class="mini">
+        <div><b style="color:var(--ocean)">235</b><span>comuni controllati, in tutte le regioni</span></div>
+        <div><b style="color:var(--ocean)">350.000</b><span>persone esposte in Veneto</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rulesrow">
+    <div><span class="lim2">Dove si trovano</span><b>Pentole antiaderenti</b><span>rivestimenti delle padelle</span></div>
+    <div><span class="lim2">Dove si trovano</span><b>Tessuti impermeabili</b><span>giacche, scarpe, tende</span></div>
+    <div><span class="lim2">Dove si trovano</span><b>Imballaggi antigrasso</b><span>carta per alimenti, cartoni</span></div>
+    <div><span class="lim2">Dove si trovano</span><b>Schiume antincendio</b><span>aeroporti, industrie</span></div>
+  </div>
+  <div class="cols cols-3 roomy">
+    <p>I PFAS sono migliaia di sostanze chimiche usate per rendere i prodotti impermeabili, antimacchia o antiaderenti. Si degradano pochissimo, per questo vengono chiamati "inquinanti eterni", e si accumulano nell'ambiente e nell'organismo.</p>
+    <h3>Cosa è cambiato</h3>
+    <p>Con la direttiva europea sull'acqua potabile (2020/2184), dal 12 gennaio 2026 gli Stati membri devono monitorare i PFAS in modo armonizzato, comunicare i risultati a Bruxelles e intervenire se i limiti vengono superati, chiudendo pozzi o aggiungendo trattamenti. I limiti Ue sono 100 nanogrammi per litro per la somma di 20 PFAS e 500 per i PFAS totali.</p>
+    <h3>Il passo avanti e il freno</h3>
+    <p>L'Italia aveva deciso di fare di più: un limite di 20 nanogrammi per litro per la somma dei quattro PFAS considerati più pericolosi (PFOA, PFOS, PFNA e PFHxS), più molecole incluse nei conteggi e, dal 2027, un limite per il TFA. A gennaio, però, la legge di Bilancio 2026 ha rinviato di sei mesi l'applicazione del limite più severo. Per i comitati dei cittadini del Veneto, dove circa 350.000 persone sono state esposte alla contaminazione, è un passo indietro.</p>
+    <h3>Quanto sono diffusi</h3>
+    <p>Nel 2024 Greenpeace ha analizzato l'acqua potabile di 235 comuni in tutte le regioni: i PFAS sono stati trovati nel 79% dei campioni. L'associazione chiede limiti vicini allo "zero tecnico" e una legge che vieti produzione e uso di queste sostanze.</p>
+    <div class="factbox"><div class="t">Al rubinetto di casa</div><div class="row"><span>I gestori del servizio idrico sono tenuti a controllare l'acqua: si possono chiedere i risultati delle analisi del proprio comune. Le caraffe filtranti non sono tutte uguali: verificare che il produttore dichiari l'efficacia sui PFAS.</span></div></div>
+    <div class="fonti"><b>FONTI</b> · Il Fatto Quotidiano, <em>«PFAS nell'acqua potabile, il governo rinvia di 6 mesi i limiti che l'Italia si era imposta»</em> (20 gennaio 2026) · Renewable Matter, <em>«PFAS e acqua potabile, piccolo passo avanti al Senato»</em> (4 giugno 2025) · Greenpeace Italia, rapporto <em>«Acque senza veleni»</em></div>
+  </div>
+
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 9</span></div>
+</section>
+
+<!-- ===================================================== CIBO · BENESSERE ===================================================== -->
+<section class="page">
+  <div class="runhead"><span class="name">Ecologia <em>Oggi</em></span><span>A tavola</span><span>Mercoledì 28 ottobre 2026</span></div>
+
+  <div class="kicker gold">A tavola <span class="where">· Europa e Brasile · 2 min di lettura</span><span class="tone mix">● Luci e ombre</span></div>
+  <h2 class="hl xl">Ormoni e antibiotici negli allevamenti: l'Europa ferma la carne dal Brasile</h2>
+  <p class="deck">Da settembre l'Ue ha sospeso le importazioni di carne, pollame, uova e miele brasiliani. Il motivo: mancano garanzie sull'uso di antibiotici negli animali. A inizio anno era scoppiato il caso della carne trattata con ormoni.</p>
+
+  <div class="stats s4">
+    <div class="stat gold"><div class="v">3 set.</div><div class="l">l'Ue sospende i prodotti animali dal Brasile</div></div>
+    <div class="stat"><div class="v">92.000 t</div><div class="l">di carne bovina brasiliana importata nel 2025</div></div>
+    <div class="stat"><div class="v">713 mln €</div><div class="l">il valore di quelle importazioni</div></div>
+    <div class="stat green"><div class="v">+50%</div><div class="l">le ispezioni Ue nei Paesi del Mercosur</div></div>
+  </div>
+  <div class="rulesrow">
+    <div><span class="no">Vietato</span><b>Ormoni della crescita</b><span>negli allevamenti europei</span></div>
+    <div><span class="no">Vietato</span><b>Antibiotici per far crescere</b><span>gli animali più in fretta</span></div>
+    <div><span class="lim2">Limitato</span><b>Antibiotici "umani"</b><span>quelli riservati alle persone</span></div>
+    <div><span class="ok">Obbligatoria</span><b>Origine in etichetta</b><span>per la carne bovina</span></div>
+  </div>
+
+  <div class="split">
+    <div class="cols cols-2">
+      <p class="dropcap">Siamo quello che mangiamo, e anche quello che mangiano gli animali che finiscono nel piatto. Dal 3 settembre 2026 l'Unione europea ha sospeso le importazioni di prodotti di origine animale dal Brasile: carne bovina, pollame, uova, miele e altri. Secondo la Commissione, il Brasile non ha dato garanzie sufficienti di rispettare le regole europee contro l'abuso di antibiotici negli allevamenti.</p>
+      <h3>Le regole europee</h3>
+      <p>Nell'Ue è vietato dare agli animali antibiotici per farli crescere più in fretta, e l'uso di quelli riservati alla medicina umana è limitato. Il motivo riguarda tutti: l'abuso di antibiotici negli allevamenti favorisce i batteri resistenti, che rendono le cure meno efficaci anche per le persone. Vietati da decenni anche gli ormoni della crescita.</p>
+      <h3>Il caso degli ormoni</h3>
+      <p>A febbraio un audit della Commissione aveva trovato gravi debolezze nella tracciabilità dei bovini trattati con ormoni in Brasile: agli allevatori mancavano le prescrizioni e gli ispettori non registravano i problemi. Ne era seguito il ritiro dal mercato europeo di carne brasiliana trattata con ormoni, e Bruxelles aveva chiesto più controlli fisici alle frontiere e aumentato del 50% le ispezioni nei Paesi del Mercosur.</p>
+      <h3>Perché conta</h3>
+      <p>Nel 2025 il Brasile è stato il secondo fornitore di carne bovina dell'Ue, con oltre 92.000 tonnellate per più di 713 milioni di euro. Da maggio è in vigore, in via provvisoria, l'accordo commerciale Ue-Mercosur, contestato da agricoltori e ambientalisti. «Una volta dimostrato il rispetto delle regole, le esportazioni potranno riprendere», ha detto la Commissione.</p>
+      <div class="fonti"><b>FONTI</b> · AFP via Malay Mail, <em>«EU halts Brazilian meat imports over animal health concerns»</em> (1 settembre 2026) · Irish Farmers Journal, <em>«Get your act in order: Brussels warning to Brazil on hormone beef»</em> (27 febbraio 2026) · AP via WTOP (12 maggio 2026)</div>
+    </div>
+    <aside>
+      <div class="howto" style="margin-top:0">
+        <div class="howto-t">Al supermercato</div>
+        <ol>
+          <li>Per la carne bovina, l'etichetta deve indicare dove l'animale è nato, è stato allevato e macellato.</li>
+          <li>Preferire filiere corte, locali e di stagione.</li>
+          <li>Il bio europeo limita l'uso di antibiotici e vieta gli ormoni.</li>
+          <li>Meno carne, ma di qualità: fa bene a noi e al pianeta.</li>
+        </ol>
+      </div>
+      <div class="pull" style="margin-top:3mm">Siamo quello che mangiamo, e anche quello che mangiano gli animali che finiscono nel piatto.</div>
+    </aside>
+  </div>
+
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 10</span></div>
+</section>
+
+<section class="page">
+  <div class="runhead"><span class="name">Ecologia <em>Oggi</em></span><span>Natura e benessere</span><span>Mercoledì 28 ottobre 2026</span></div>
+
+  <div class="kicker">Natura e benessere <span class="where">· Ricerca · 2 min di lettura</span><span class="tone pos">▲ Buona notizia, con prudenza</span></div>
+  <h2 class="hl xl">Vitamina D e omega-3: cosa dice davvero la scienza sugli integratori</h2>
+  <p class="deck">Il grande studio americano VITAL ha seguito per anni migliaia di adulti. La vitamina D sembra rallentare un segnale dell'invecchiamento. Gli omega-3, su questo punto, no.</p>
+
+  <figure class="figure">
+    <svg viewBox="0 0 640 132" role="img" aria-label="Studio VITAL: 1.054 partecipanti seguiti per 4 anni; vitamina D3 2.000 UI al giorno ha protetto i telomeri, omega-3 1 grammo al giorno nessun effetto">
+      <rect width="640" height="132" fill="#efe8d6"/>
+      <g font-family="Inter, sans-serif">
+        <g transform="translate(18,20)">
+          <rect width="150" height="92" fill="#1b1d1a"/>
+          <text x="12" y="20" font-size="7" font-weight="700" letter-spacing="1" fill="#cfe0d4">LO STUDIO VITAL</text>
+          <text x="12" y="52" font-size="26" font-family="Playfair Display, serif" font-weight="900" fill="#f8f4ea">1.054</text>
+          <text x="12" y="68" font-size="8" fill="#e6efe6">partecipanti, telomeri misurati</text>
+          <text x="12" y="80" font-size="8" fill="#e6efe6">all'inizio, dopo 2 e dopo 4 anni</text>
+        </g>
+        <g stroke="#1b1d1a" stroke-width="1.3" fill="none"><path d="M172 66 H 196 M196 40 V 92 M196 40 H 214 M196 92 H 214"/></g>
+        <g transform="translate(218,14)">
+          <rect width="404" height="50" fill="#1f5a3f"/>
+          <text x="14" y="21" font-size="12" font-weight="700" fill="#f8f4ea">Vitamina D3 · 2.000 UI al giorno</text>
+          <text x="14" y="38" font-size="8.5" fill="#cfe0d4">Accorciamento dei telomeri rallentato: circa 3 anni di invecchiamento evitati</text>
+          <text x="384" y="34" font-size="20" font-weight="700" fill="#f8f4ea" text-anchor="end">✓</text>
+        </g>
+        <g transform="translate(218,70)">
+          <rect width="404" height="50" fill="#f8f4ea" stroke="#1b1d1a"/>
+          <text x="14" y="21" font-size="12" font-weight="700" fill="#1b1d1a">Omega-3 · 1 grammo al giorno</text>
+          <text x="14" y="38" font-size="8.5" fill="#5d6157">Nessun effetto misurabile sulla lunghezza dei telomeri</text>
+          <text x="384" y="34" font-size="20" font-weight="700" fill="#b4471f" text-anchor="end">✗</text>
+        </g>
+      </g>
+    </svg>
+    <figcaption>Studio randomizzato, in doppio cieco, con placebo. Fonte: American Journal of Clinical Nutrition, maggio 2025.</figcaption>
+  </figure>
+
+  <div class="split">
+  <div class="cols cols-2">
+    <p>Gli integratori naturali sono ovunque, dalle farmacie ai supermercati. Ma quali funzionano davvero? Una delle risposte più solide viene da VITAL, uno studio clinico randomizzato condotto negli Stati Uniti dal Mass General Brigham: uomini sopra i 50 anni e donne sopra i 55 hanno preso per cinque anni vitamina D, omega-3 o un placebo, senza sapere cosa stessero assumendo.</p>
+    <h3>Il risultato sui telomeri</h3>
+    <p>I telomeri sono le "punte" protettive dei cromosomi: si accorciano con l'età. In un gruppo di 1.054 partecipanti, 2.000 unità al giorno di vitamina D3 hanno ridotto in modo significativo questo accorciamento in quattro anni, l'equivalente di quasi tre anni di invecchiamento evitato. Un grammo al giorno di omega-3 non ha avuto effetti misurabili. Lo studio è stato pubblicato sull'<i>American Journal of Clinical Nutrition</i>.</p>
+    <h3>Le cautele</h3>
+    <p>Gli autori parlano di risultato «promettente», ma chiedono altre ricerche: studi precedenti, più piccoli, avevano dato risultati contrastanti. E la vitamina D non è innocua a dosi alte: troppa fa male. La dose giusta dipende dai propri valori nel sangue.</p>
+    <div class="fonti"><b>FONTE</b> · ScienceDaily / Mass General Brigham, <em>«Vitamin D3 and marine omega-3 fatty acids supplementation and leukocyte telomere length: 4-year findings from the VITAL trial»</em>, American Journal of Clinical Nutrition (maggio 2025)</div>
+  </div>
+  <aside>
+    <div class="rules" style="margin-top:0">
+      <div class="rules-t">Le regole di questa rubrica</div>
+      <ul>
+        <li>Raccontiamo solo rimedi e integratori studiati dalla scienza, con le fonti.</li>
+        <li>Niente promesse miracolose: diciamo cosa funziona, cosa no e cosa non si sa.</li>
+        <li>Anche i prodotti naturali possono interagire con i farmaci.</li>
+        <li>Prima di iniziare un integratore, parlane con il medico o il farmacista.</li>
+      </ul>
+    </div>
+    <div class="howto">
+      <div class="howto-t">Le domande da fare al farmacista</div>
+      <ol>
+        <li>Ne ho davvero bisogno? Ci sono esami che lo dicono?</li>
+        <li>Può interagire con i farmaci che prendo?</li>
+        <li>Quanto prenderne, e per quanto tempo?</li>
+        <li>Ci sono studi seri che ne dimostrano l'efficacia?</li>
+      </ol>
+    </div>
+  </aside>
+  </div>
+
+  <div class="gloss">
+    <div class="ag-t">Piccolo glossario per leggere gli studi</div>
+    <div class="gl-row">
+      <div><b>Randomizzato</b><span>I partecipanti sono divisi nei gruppi a caso, così i gruppi sono confrontabili.</span></div>
+      <div><b>Placebo</b><span>Una pillola identica ma senza principio attivo, per capire se l'effetto è reale.</span></div>
+      <div><b>Doppio cieco</b><span>Né i partecipanti né i ricercatori sanno chi prende cosa fino alla fine.</span></div>
+      <div><b>Telomeri</b><span>Le "punte" dei cromosomi che si accorciano con l'età: un segnale dell'invecchiamento.</span></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 11</span></div>
 </section>
 
 </body>
