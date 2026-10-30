@@ -281,6 +281,27 @@
   .stack .stat { padding: 2.2mm 0; border-bottom: 0.4pt solid var(--hair); }
   .stack .stat + .stat { border-left: 0; }
 
+  /* buone notizie */
+  .good-banner { display: grid; grid-template-columns: auto 1fr; gap: 7mm; align-items: end; background: var(--green); color: #f3efe2; padding: 5mm 6mm; margin-bottom: 5mm; }
+  .good-banner .over-g { font-family: Inter, sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: #bcd6c4; }
+  .good-banner h2 { font-family: "Playfair Display", serif; font-style: italic; font-weight: 800; font-size: 40pt; line-height: 1; margin-top: 1mm; white-space: nowrap; }
+  .good-banner p { font-style: italic; font-size: 10.4pt; line-height: 1.38; color: #e6efe6; }
+  .good-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 7mm; }
+  .good { padding: 3mm 0 4mm; border-top: 2.2pt solid var(--rule); }
+  .good:nth-child(n+3) { margin-top: 1mm; }
+  .good h3 { font-family: "Playfair Display", serif; font-weight: 800; font-size: 15.5pt; line-height: 1.1; margin-bottom: 2mm; }
+  .good .g-stat { display: grid; grid-template-columns: auto 1fr; gap: 3mm; align-items: center; padding: 1.8mm 0; margin-bottom: 2mm; border-top: 0.4pt solid var(--hair); border-bottom: 0.4pt solid var(--hair); }
+  .good .g-stat b { font-family: "Playfair Display", serif; font-weight: 900; font-size: 22pt; line-height: 1; color: var(--green); }
+  .good .g-stat span { font-family: Inter, sans-serif; font-size: 6.8pt; line-height: 1.3; color: var(--muted); }
+  .good p { font-size: 9.2pt; line-height: 1.42; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .good .fonti { margin-top: 2mm; }
+  .also-good { margin-top: auto; margin-bottom: 3mm; background: var(--green-soft); border-top: 2.2pt solid var(--green); padding: 3mm 4mm; }
+  .also-good + .foot { margin-top: 0; }
+  .ag-t { font-family: Inter, sans-serif; font-size: 6.8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 2mm; }
+  .ag-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+  .ag-row b { display: block; font-family: "Playfair Display", serif; font-weight: 900; font-size: 18pt; line-height: 1; color: var(--green); }
+  .ag-row span { display: block; font-size: 8.2pt; line-height: 1.3; margin-top: 1mm; }
+
   .colophon {
     margin-top: auto; margin-bottom: 3mm; border: 0.6pt solid var(--rule); padding: 3.4mm 4mm; display: grid; grid-template-columns: auto 1fr; gap: 4mm; align-items: center;
   }
@@ -313,7 +334,7 @@
       <h1>Ecologia <em>Oggi</em></h1>
       <div class="motto">Notizie dal pianeta, ogni mattina</div>
     </div>
-    <div class="ear"><strong>Edizione del mattino</strong><b>6 notizie</b>dal mondo e dall'Italia, con le fonti sempre citate</div>
+    <div class="ear"><strong>Buone notizie</strong><b>4 storie positive</b>dal mondo e dall'Italia, a pagina 2</div>
   </header>
 
   <nav class="navbar">
@@ -364,19 +385,19 @@
     <aside>
       <div class="aside-title">In questo numero</div>
       <div class="teaser"><div class="n">1</div><div>
-        <div class="kicker fire">Foreste e suolo <span class="where">· p. 2</span></div>
+        <div class="kicker fire">Foreste e suolo <span class="where">· p. 3</span></div>
         <h4>Amazzonia in fiamme: incendi su del 62% mentre la deforestazione tocca il minimo storico</h4></div></div>
       <div class="teaser"><div class="n">2</div><div>
-        <div class="kicker ">Clima <span class="where">· p. 3</span></div>
+        <div class="kicker ">Clima <span class="where">· p. 4</span></div>
         <h4>COP31 di Antalya: tutto quello che c'è da sapere sul vertice di novembre</h4></div></div>
       <div class="teaser"><div class="n">3</div><div>
-        <div class="kicker ">Biodiversità <span class="where">· p. 4</span></div>
+        <div class="kicker ">Biodiversità <span class="where">· p. 5</span></div>
         <h4>A Yerevan il primo bilancio mondiale: meno della metà degli obiettivi è in linea</h4></div></div>
       <div class="teaser"><div class="n">4</div><div>
-        <div class="kicker gold">Rifiuti e riciclo <span class="where">· p. 5</span></div>
+        <div class="kicker gold">Rifiuti e riciclo <span class="where">· p. 6</span></div>
         <h4>Riciclo della plastica, l'Italia in affanno: impianti in crisi e magazzini pieni</h4></div></div>
       <div class="teaser" style="border-bottom:0;margin-bottom:0;padding-bottom:0"><div class="n">5</div><div>
-        <div class="kicker ">Leggi e politica <span class="where">· p. 6</span></div>
+        <div class="kicker ">Leggi e politica <span class="where">· p. 7</span></div>
         <h4>«Giudizio Universale», la prima causa climatica contro lo Stato torna in tribunale</h4></div></div>
     </aside>
   </div>
@@ -401,6 +422,64 @@
   </div>
 
   <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 1</span></div>
+</section>
+
+<!-- ===================================================== BUONE NOTIZIE ===================================================== -->
+<section class="page">
+  <div class="runhead"><span class="name">Ecologia <em>Oggi</em></span><span>Buone notizie</span><span>Mercoledì 28 ottobre 2026</span></div>
+
+  <div class="good-banner">
+    <div>
+      <div class="over-g">Non solo allarmi</div>
+      <h2>Le buone notizie</h2>
+    </div>
+    <p>Accanto alle crisi ci sono persone, governi e scienziati che stanno facendo funzionare le cose. Ogni numero ve le raccontiamo, con le fonti sempre citate.</p>
+  </div>
+
+  <div class="good-grid">
+    <article class="good">
+      <div class="kicker">Energia <span class="where">· Italia</span></div>
+      <h3>Rinnovabili, l'Italia corre: 4,58 GW di nuovi impianti in otto mesi</h3>
+      <div class="g-stat"><b>88,1 GW</b><span>la potenza rinnovabile totale in Italia a fine agosto 2026</span></div>
+      <p>Tra gennaio e agosto 2026 in Italia sono entrati in esercizio circa 98.000 nuovi impianti a fonti rinnovabili, per 4,58 gigawatt di potenza: 4,17 GW di fotovoltaico e 0,4 GW di eolico. Lo dicono i dati di Terna. Negli ultimi dodici mesi la nuova potenza ha raggiunto 7,74 GW. Per misurare il cambio di passo: nel 2021 l'Italia aveva installato, in un anno intero, appena 1,3 GW.</p>
+      <div class="fonti"><b>FONTE</b> · SoldiOnline, <em>«Rinnovabili, corsa record in Italia: 4,58 GW installati in 8 mesi»</em> (16 settembre 2026), dati Terna</div>
+    </article>
+
+    <article class="good">
+      <div class="kicker ocean">Oceani e acque <span class="where">· Groenlandia</span></div>
+      <h3>La Groenlandia dice no alle miniere sui fondali marini</h3>
+      <div class="g-stat"><b>Unanime</b><span>il voto del Parlamento groenlandese, il 16 ottobre</span></div>
+      <p>Il Parlamento della Groenlandia ha votato all'unanimità per vietare l'estrazione di minerali dai fondali marini. La risoluzione impegna il governo a introdurre regole valide almeno fino alla fine del 2029, con possibili proroghe di due anni. L'obiettivo è proteggere l'ambiente marino e la pesca, pilastro dell'economia dell'isola. Il voto arriva mentre gli Stati Uniti annunciano esplorazioni minerarie su larga scala nell'isola.</p>
+      <div class="fonti"><b>FONTE</b> · European Interest, <em>«Greenland's Parliament bans deep-sea mineral extraction»</em> (17 ottobre 2026)</div>
+    </article>
+
+    <article class="good">
+      <div class="kicker ocean">Oceani e acque <span class="where">· Ricerca</span></div>
+      <h3>Coralli sbiancati tornati in vita in sette settimane</h3>
+      <div class="g-stat"><b>5 su 5</b><span>i frammenti sbiancati che si sono ripresi a contatto con quelli sani</span></div>
+      <p>Un esperimento della Stanford University, pubblicato il 15 ottobre su <i>Science Advances</i>, ha messo a contatto coralli sbiancati con frammenti sani della stessa colonia: in sette settimane tutti si sono ripresi, mentre quelli tenuti a pochi millimetri di distanza sono morti. In tre giorni le alghe benefiche sono passate dai coralli sani a quelli malati. Gli autori sono prudenti: il test è piccolo, fatto in laboratorio, e funziona solo tra coralli identici. Non ferma il riscaldamento dei mari, ma può aiutare il recupero.</p>
+      <div class="fonti"><b>FONTE</b> · Euronews, <em>«They're not dead yet: bleached corals recover in record time after touching healthy clones»</em> (15 ottobre 2026)</div>
+    </article>
+
+    <article class="good">
+      <div class="kicker">Biodiversità <span class="where">· Stati Uniti</span></div>
+      <h3>Un ponte per gli animali: investimenti giù del 91%</h3>
+      <div class="g-stat"><b>−91%</b><span>gli animali investiti sull'autostrada I-25, in Colorado, in dieci mesi</span></div>
+      <p>Prima, lungo l'autostrada tra Larkspur e Monument, un animale selvatico veniva investito circa una volta al giorno. Da quando, a dicembre 2025, è stato completato il più grande ecodotto del Nordamerica, con cinque sottopassi e recinzioni che guidano gli animali, gli investimenti segnalati sono stati due. L'opera, costata 15 milioni di dollari, ricollega circa 16.000 ettari di habitat: ci passano wapiti, cervi, orsi e perfino rane e rospi.</p>
+      <div class="fonti"><b>FONTE</b> · The Colorado Sun, articolo sull'ecodotto della I-25 (14 ottobre 2026)</div>
+    </article>
+  </div>
+
+  <div class="also-good">
+    <div class="ag-t">E nelle altre pagine di oggi</div>
+    <div class="ag-row">
+      <div><b>−42%</b><span>la deforestazione in Amazzonia, al minimo dal 1988 · <i>p. 3</i></span></div>
+      <div><b>407 mln t</b><span>di CO₂ all'anno catturate da mangrovie e praterie marine · <i>p. 1</i></span></div>
+      <div><b>≈90%</b><span>dei Paesi ha fissato obiettivi per la biodiversità · <i>p. 5</i></span></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 2</span></div>
 </section>
 
 <!-- ===================================================== PAGINA 2 ===================================================== -->
@@ -460,7 +539,7 @@
     <div class="fonti"><b>FONTI</b> · MercoPress, <em>«Amazon fires rise 62% in October as deforestation falls to a record low»</em> (21 ottobre 2026) · Reuters via Internazionale, <em>«Fires surge in Brazil's Amazon, fueled by El Niño and climate change»</em> (14 ottobre 2026)</div>
   </div>
 
-  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 2</span></div>
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 3</span></div>
 </section>
 
 <!-- ===================================================== PAGINA 3 ===================================================== -->
@@ -529,7 +608,7 @@
     </aside>
   </div>
 
-  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 3</span></div>
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 4</span></div>
 </section>
 
 <!-- ===================================================== PAGINA 4 ===================================================== -->
@@ -588,7 +667,7 @@
     <p><b>Il giornale sull'ambiente, ogni mattina.</b> A cura della redazione di Servizi Ecologici. Gli articoli sono sintesi originali scritte dalla redazione a partire dalle fonti citate in fondo a ogni pezzo, a cui rimandiamo per approfondire. © 2026 Servizi Ecologici.</p>
   </div>
 
-  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 4</span></div>
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 5</span></div>
 </section>
 
 <!-- ===================================================== PAGINA 5 ===================================================== -->
@@ -660,7 +739,7 @@
     <div class="fonti"><b>FONTI</b> · Regione Veneto, comunicato sulla crisi della filiera della plastica · Renewable Matter, <em>«Riciclo plastica, la crisi peggiora: Utilitalia e ANCI chiedono misure di emergenza»</em> · Teleborsa, <em>«Riciclo della plastica, ASSORIMAP scrive alla Premier Meloni: la crisi ormai è un'emergenza»</em> (24 settembre 2026)</div>
   </div>
 
-  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 5</span></div>
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 6</span></div>
 </section>
 
 <!-- ===================================================== PAGINA 6 ===================================================== -->
@@ -713,7 +792,7 @@
     </aside>
   </div>
 
-  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 6</span></div>
+  <div class="foot"><span>Ecologia Oggi · Il giornale sull'ambiente</span><span>Pagina 7</span></div>
 </section>
 
 </body>
